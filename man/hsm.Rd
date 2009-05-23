@@ -5,8 +5,8 @@
 %\alias{fsm}
 %\alias{robertson}
 %\alias{cryer}
-%Robertson & Cryer ??  OUI (à ceci près que Robertson et Cryer proposent d'instaurer
-%un arrêt de la procédure itérative après un certain nombre d'itérations)
+%Robertson & Cryer ??  OUI (a ceci pres que Robertson et Cryer proposent d'instaurer
+%un arret de la procedure iterative apres un certain nombre d'iterations)
 
 \title{ Half Sample Mode }
 \description{
@@ -14,12 +14,12 @@ This function computes the Robertson-Cryer mode estimator described in Robertson
 also called half sample mode (if \code{bw = 1/2}) or fraction sample mode (for some other \code{bw}) by Bickel (2006). 
 }
 \usage{
-hsm(x, 
-    bw = NULL, 
-    k, 
-    tie.action = "mean", 
-    tie.limit = 0.05, 
-    ...)
+  hsm(x, 
+      bw = NULL, 
+      k, 
+      tie.action = "mean", 
+      tie.limit = 0.05, 
+      ...)
 }
 \arguments{
   \item{x}{ numeric. Vector of observations. }
@@ -49,7 +49,7 @@ This returns an object of class \code{\link{mlv}}.
     An iterative procedure for estimating the mode.
     \emph{J. Amer. Statist. Assoc.}, \bold{69}(348):1012-1016.
     
-    \item Bickel D.R. et Frühwirth R. (2006).
+    \item Bickel D.R. et Fruehwirth R. (2006).
     On a Fast, Robust Estimator of the Mode: Comparisons to Other Robust Estimators with Applications.
     \emph{Computational Statistics and Data Analysis}, \bold{50}(12):3500-3530.
   }
@@ -62,8 +62,10 @@ Paul Poncet \email{paulponcet@yahoo.fr} for the slight modifications introduced.
 \examples{
 # Unimodal distribution
 x <- rweibull(10000, shape = 3, scale = 0.9)
+
 ## True mode
 weibullMode(shape = 3, scale = 0.9)
+
 ## Estimate of the mode
 bandwidth <- function(n, alpha) {1/n^alpha}
 hsm(x, bw = bandwidth, alpha = 2)

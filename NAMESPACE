@@ -13,6 +13,8 @@ S3method(plot, mlv)      # il n'est pas nécessaire d'exporter ces fonctions
 S3method(plot, lientz)
 
 S3method(print, mlv)
+S3method(as.numeric, mlv)
+
 #S3method(print, .kernel)
 S3method(print, lientz)
 

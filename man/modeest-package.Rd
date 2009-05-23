@@ -4,14 +4,14 @@
 
 \docType{package}
 \title{
-Mode Estimation - Chernoff Distribution
+Mode Estimation % - Chernoff Distribution
 }
 \description{
 This package intends to provide estimators of the mode of univariate 
 unimodal (and sometimes multimodal) data and values of the modes of usual probability distributions. 
-It also includes computation of the density function, distribution function, and quantile 
-function of the Chernoff distribution, which is the limiting distribution of the
-Chernoff mode estimator.
+%It also includes computation of the density function, distribution function, and quantile 
+%function of the Chernoff distribution, which is the limiting distribution of the
+%Chernoff mode estimator.
 
 For a complete list of functions, use \code{library(help = "modeest")} or \code{help.start()}.
 }
@@ -19,8 +19,8 @@ For a complete list of functions, use \code{library(help = "modeest")} or \code{
 \tabular{ll}{
 Package: \tab modeest\cr
 Type: \tab Package\cr
-Version: \tab 1.03\cr
-Date: \tab 2006-12-01\cr
+Version: \tab 1.09\cr
+Date: \tab 2009-05-23\cr
 License: \tab GPL version 2 or newer\cr
 }
 }
@@ -63,11 +63,11 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
     Results on nonparametric modal intervals.
     \emph{SIAM J. Appl. Math.}, \bold{19}:356-366.
 
-    \item Wegman E.J. (1971).           % à revoir !!
+    \item Wegman E.J. (1971).           % a revoir !!
     A note on the estimation of the mode.
     \emph{Ann. Math. Statist.}, \bold{42}(6):1909-1915.
 
-    \item Yamato H. (1971).             % à revoir !!
+    \item Yamato H. (1971).             % a revoir !!
     Sequential estimation of a continuous probability density function and mode.
     \emph{Bull. Math. Statist.}, \bold{14}:1-12.
 
@@ -91,7 +91,7 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
     Uniform consistency of a histogram density estimator and modal estimation.
     \emph{Commun. Statist.}, \bold{4}:303-315.
 
-    \item Sager T.W. (1975).               % à revoir !!
+    \item Sager T.W. (1975).               % a revoir !!
     Consistency in nonparametric estimation of the mode.
     \emph{Ann. Statist.}, \bold{3}(3):698-706.
    
@@ -108,18 +108,18 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
     \emph{Commun. Statist.-Theor. Meth. A}, \bold{6}:773-776.
 
     \item Asselin de Beauville J.-P. (1978).
-    Estimation non paramétrique de la densité et du mode, exemple de la distribution Gamma.
-    \emph{Revue de Statistique Appliquée}, \bold{26}(3):47-70.
+    Estimation non parametrique de la densite et du mode, exemple de la distribution Gamma.
+    \emph{Revue de Statistique Appliquee}, \bold{26}(3):47-70.
 
-    \item Sager T.W. (1978).     % à revoir !!
+    \item Sager T.W. (1978).     % a revoir !!
     Estimation of a multivariate mode.
     \emph{Ann. Statist.}, \bold{6}:802-812.
 
-    \item Devroye L. (1979).     % à revoir !!
+    \item Devroye L. (1979).     % a revoir !!
     Recursive estimation of the mode of a multivariate density.
     \emph{Canadian J. Statist.}, \bold{7}(2):159-167.
 
-    \item Sager T.W. (1979).    % à revoir !!
+    \item Sager T.W. (1979).    % a revoir !!
     An iterative procedure for estimating a multivariate mode and isopleth.
     \emph{J. Amer. Statist. Assoc.}, \bold{74}(366):329-339.
 
@@ -160,8 +160,8 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
     \emph{Amer. Statist.}, \bold{50}(2):120-126.
 
     \item Leclerc J. (1997).
-    Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naïf.
-    \emph{C. R. Acad. Sci. Paris, Série I}, \bold{325}(11):1207-1210.
+    Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naif.
+    \emph{C. R. Acad. Sci. Paris, Serie I}, \bold{325}(11):1207-1210.
 
     %\item Minnotte M. C. (1997).
     %Nonparametric testing of the existence of modes.
@@ -196,11 +196,11 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
     \emph{J. Statist. Comput. Simul.}, \bold{73}:899-912.
 
     \item Djeddour K., Mokkadem A. et Pelletier M. (2003).
-    Sur l'estimation récursive du mode et de la valeur modale d'une densité de probabilité.
+    Sur l'estimation recursive du mode et de la valeur modale d'une densite de probabilite.
     \emph{Technical report 105}.
 
     \item Djeddour K., Mokkadem A. et Pelletier M. (2003).
-    Application du principe de moyennisation à l'estimation récursive du mode et de la valeur modale d'une densité de probabilité.
+    Application du principe de moyennisation a l'estimation recursive du mode et de la valeur modale d'une densite de probabilite.
     \emph{Technical report 106}.
 
     \item Hedges S.B. and Shah P. (2003).
@@ -223,7 +223,7 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
     Adaptive Estimation of the Mode of a Multivariate Density.
     \emph{J. Nonparametr. Statist.}, \bold{17}(1):83-105.
 
-    \item Bickel D.R. et Frühwirth R. (2006).
+    \item Bickel D.R. et Fruehwirth R. (2006).
     On a Fast, Robust Estimator of the Mode: Comparisons to Other Robust Estimators with Applications.
     \emph{Computational Statistics and Data Analysis}, \bold{50}(12):3500-3530.
     
@@ -234,6 +234,6 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
 \keyword{ univar }
 \keyword{ robust }
 \keyword{ nonparametric }
-\seealso{ \code{\link{mlv}} for general mode estimation;
-\code{\link{dchern}} for the Chernoff distribution
+\seealso{ \code{\link{mlv}} for general mode estimation%;
+%\code{\link{dchern}} for the Chernoff distribution
 }

@@ -31,50 +31,50 @@
 
 \title{ Computing the Mode of Some Distributions }
 \description{
-These functions return the mode of the main distributions implemented in \R.
+These functions return the mode of the main probability distributions implemented in \R.
 }
 
 \usage{
-## Continuous distributions
-betaMode(shape1, shape2, ncp = 0) # Beta
-cauchyMode(location = 0, ...) # Cauchy
-chisqMode(df, ncp = 0) # Chisquare
-expMode(...) # Exponentiel
-fMode(df1, df2) # F
-frechetMode(loc = 0, scale = 1, shape = 1, ...) # Fréchet (package 'evd')
-gammaMode(shape, rate = 1, scale = 1/rate) # Gamma
-normMode(mean = 0, ...) # Normal (Gaussian)
-gevMode(loc = 1, scale = 1, shape = 1, ...) # Generalised Extreme Value (package 'evd')
-ghMode(alpha = 1, beta = 0, delta = 1, mu = 0, 
-       lambda = 1, ...) # Generalised Hyperbolic (package 'fBasics')
-gpdMode(loc = 0, scale = 1, shape = 0, ...) # Generalised Pareto (package 'evd')
-gumbelMode(loc = 0, ...) # Gumbel (package 'evd')
-hypMode(alpha = 1, beta = 0, delta = 1, mu = 0, 
-        pm = c(1, 2, 3, 4)) # Hyperbolic (package 'fBasics')
-logisMode(location = 0, ...) # Logistic
-lnormMode(meanlog = 0, sdlog = 1) # Lognormal
-nigMode(alpha = 1, beta = 0, delta = 1, 
-        mu = 0, ...) # Normal Inverse Gaussian (package 'fBasics')
-stableMode(alpha, beta, gamma = 1, delta = 0, pm = 0, ...) # Stable (package 'fBasics')
-symstbMode(...) # Symmetric stable (package 'fBasics')
-rweibullMode(loc = 0, scale = 1, shape = 1, ...) # Negative Weibull (package 'evd')
-tMode(df, ncp = 0) # T (Student)
-unifMode(min = 0, max = 1) # Uniform
-weibullMode(shape, scale = 1, ...) # Weibull
-
-## Discrete distributions
-bernMode(prob) # Bernoulli
-binomMode(size, prob) # Binomial
-geomMode(...) # Geometric
-hyperMode(m, n, k, ...) # Hypergeometric
-nbinomMode(size, prob, mu) # Negative Binomial
-poisMode(lambda) # Poisson
+  ## Continuous distributions
+  betaMode(shape1, shape2, ncp = 0) # Beta
+  cauchyMode(location = 0, ...) # Cauchy
+  chisqMode(df, ncp = 0) # Chisquare
+  expMode(...) # Exponentiel
+  fMode(df1, df2) # F
+  frechetMode(loc = 0, scale = 1, shape = 1, ...) # Frechet (package 'evd')
+  gammaMode(shape, rate = 1, scale = 1/rate) # Gamma
+  normMode(mean = 0, ...) # Normal (Gaussian)
+  gevMode(loc = 0, scale = 1, shape = 0, ...) # Generalised Extreme Value (package 'evd')
+  ghMode(alpha = 1, beta = 0, delta = 1, mu = 0, 
+         lambda = 1, ...) # Generalised Hyperbolic (package 'fBasics')
+  gpdMode(loc = 0, scale = 1, shape = 0, ...) # Generalised Pareto (package 'evd')
+  gumbelMode(loc = 0, ...) # Gumbel (package 'evd')
+  hypMode(alpha = 1, beta = 0, delta = 1, mu = 0, 
+          pm = c(1, 2, 3, 4)) # Hyperbolic (package 'fBasics')
+  logisMode(location = 0, ...) # Logistic
+  lnormMode(meanlog = 0, sdlog = 1) # Lognormal
+  nigMode(alpha = 1, beta = 0, delta = 1, 
+          mu = 0, ...) # Normal Inverse Gaussian (package 'fBasics')
+  stableMode(alpha, beta, gamma = 1, delta = 0, pm = 0, ...) # Stable (package 'fBasics')
+  symstbMode(...) # Symmetric stable (package 'fBasics')
+  rweibullMode(loc = 0, scale = 1, shape = 1, ...) # Negative Weibull (package 'evd')
+  tMode(df, ncp = 0) # T (Student)
+  unifMode(min = 0, max = 1) # Uniform
+  weibullMode(shape, scale = 1, ...) # Weibull
+  
+  ## Discrete distributions
+  bernMode(prob) # Bernoulli
+  binomMode(size, prob) # Binomial
+  geomMode(...) # Geometric
+  hyperMode(m, n, k, ...) # Hypergeometric
+  nbinomMode(size, prob, mu) # Negative Binomial
+  poisMode(lambda) # Poisson
 }
 \arguments{
   \item{shape1, shape2, ncp, location, df, df1, df2, loc, scale, shape,}{}
   \item{rate, mean, alpha, beta, delta, mu, lambda, pm, meanlog, sdlog,}{}
-  \item{gamma, min, max, prob, size, m, n, k} {The different arguments are those of the corresponding distribution functions.}
-  \item{...}{ further arguments, which will be ignored. }
+  \item{gamma, min, max, prob, size, m, n, k}{ The different arguments are those of the corresponding distribution functions. }
+  \item{...}{ Further arguments, which will be ignored. }
 }
 \value{
 A numeric value is returned, the (true) mode of the distribution.

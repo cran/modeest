@@ -14,16 +14,16 @@ distribution considered.
 }
 
 \usage{
-skewness(x, 
-         \dots)
-\method{skewness}{default}(x, 
-         na.rm = FALSE, 
-         method = c("moment", "fisher", "bickel"), 
-         M = shorth(x), 
-         \dots)
-%\method{skewness}{data.frame}(x, \dots)
-%\method{skewness}{POSIXct}(x, \dots)
-%\method{skewness}{POSIXlt}(x, \dots)
+  skewness(x, 
+           \dots)
+  \method{skewness}{default}(x, 
+           na.rm = FALSE, 
+           method = c("moment", "fisher", "bickel"), 
+           M = shorth(x), 
+           \dots)
+  %\method{skewness}{data.frame}(x, \dots)
+  %\method{skewness}{POSIXct}(x, \dots)
+  %\method{skewness}{POSIXlt}(x, \dots)
 }
 
 
@@ -46,7 +46,7 @@ skewness(x,
 
 \value{
 \code{skewness} returns a numeric value. 
-An attribute which reports the used method is added.
+An attribute which reports the method used is added.
 }
 
 \references{
@@ -55,7 +55,7 @@ An attribute which reports the used method is added.
     Robust estimators of the mode and skewness of continuous data.
     \emph{Computational Statistics and Data Analysis}, \bold{39}:153-163.
     
-    \item Bickel D.R. et Frühwirth R. (2006).
+    \item Bickel D.R. et Fruehwirth R. (2006).
     On a Fast, Robust Estimator of the Mode: Comparisons to Other Robust Estimators with Applications.
     \emph{Computational Statistics and Data Analysis}, \bold{50}(12):3500-3530.
   }

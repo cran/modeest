@@ -7,20 +7,21 @@
 %\alias{mlv.lms}
 \alias{lms}
 
-\title{ Venter / Dalenius / LMS Mode Estimator }
+\title{ The Venter / Dalenius / LMS Mode Estimator }
 \description{
-This function computes Venter mode estimator, also called Dalenius, or LMS (Least Median Square) mode estimator.
+This function computes the Venter mode estimator, also called the Dalenius, or LMS (Least Median Square) mode estimator.
 }
 \usage{
-venter(x, 
-       bw = NULL, 
-       k, 
-       iter = 1, 
-       type = 1, 
-       tie.action = "mean", 
-       tie.limit = 0.05)
-shorth(x, 
-       ...)
+  venter(x, 
+         bw = NULL, 
+         k, 
+         iter = 1, 
+         type = 1, 
+         tie.action = "mean", 
+         tie.limit = 0.05)
+  
+  shorth(x, 
+         ...)
 }
 \arguments{
   \item{x}{ numeric. Vector of observations. }
@@ -68,8 +69,8 @@ This returns an object of class \code{\link{mlv}}.
     %\item Rousseeuw and Leroy, 1987  #(ou bien Andrews ?)
     
     \item Leclerc J. (1997).
-    Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naïf.
-    \emph{C. R. Acad. Sci. Paris, Série I}, \bold{325}(11):1207-1210.
+    Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naif.
+    \emph{C. R. Acad. Sci. Paris, Serie I}, \bold{325}(11):1207-1210.
 
     \item Leclerc J. (2000).
     Strong limiting behavior of two estimates of the mode: the shorth and the naive estimator. 
@@ -82,10 +83,13 @@ This returns an object of class \code{\link{mlv}}.
 \seealso{ \code{\link{mlv}} for general mode estimation, \code{\link{hsm}} for the half sample mode }
 \examples{
 library(evd)
+
 # Unimodal distribution
 x <- rgev(1000, loc = 23, scale = 1.5, shape = 0)
+
 ## True mode
 gevMode(loc = 23, scale = 1.5, shape = 0)
+
 ## Estimate of the mode
 venter(x, bw = 1/3)
 M <- mlv(x, method = "venter", bw = 1/3)

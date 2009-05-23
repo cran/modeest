@@ -24,7 +24,7 @@ function(x,                  # sample (the data)
   if (type == "-Inf" | type == "5") type <- "ekblom"
   if (type == "6") type <- "hsm"
   
-  if (type == "hsm") return(mlv.hsm(x = x, bw = bw, k = k, tie.action = tie.action, tie.limit = tie.limit))
+  if (type == "hsm") return(hsm(x = x, bw = bw, k = k, tie.action = tie.action, tie.limit = tie.limit))
   
   if (missing(k) & !is.null(bw)) {
     if (bw <= 0 | bw > 1) stop("argument 'bw' must belong to (0, 1]")

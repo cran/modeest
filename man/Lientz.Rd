@@ -5,30 +5,31 @@
 \alias{plot.lientz}
 \alias{print.lientz}
 
-\title{ Empirical Lientz Function and Lientz Mode Estimator }
+\title{ The Empirical Lientz Function and The Lientz Mode Estimator }
 \description{
   The Lientz mode estimator is nothing but the value minimizing the empirical
   Lientz function. \cr
   A 'plot' and a 'print' methods are provided. 
 }
 \usage{
-lientz(x, 
-       bw = NULL)
-%mlv.lientz(x, bw = NULL, biau = FALSE, par = shorth(x), optim.method = "BFGS", ...)
-
-\method{mlv}{lientz}(x, 
-       bw = NULL, 
-       biau = FALSE, 
-       par = shorth(x), 
-       optim.method = "BFGS", 
+  lientz(x, 
+         bw = NULL)
+  %mlv.lientz(x, bw = NULL, biau = FALSE, par = shorth(x), optim.method = "BFGS", ...)
+  
+  \method{mlv}{lientz}(x, 
+      bw = NULL, 
+      biau = FALSE, 
+      par = shorth(x), 
+      optim.method = "BFGS", 
+      ...)
+           
+  \method{plot}{lientz}(x, 
+       zoom = FALSE, 
        ...)
-         
-\method{plot}{lientz}(x, 
-    zoom = FALSE, 
-    ...)
-\method{print}{lientz}(x, 
-     digits = NULL, 
-     ...)
+       
+  \method{print}{lientz}(x, 
+        digits = NULL, 
+        ...)
 }
 \arguments{
   \item{x}{ numeric (vector of observations) or an object of class \code{"lientz"}. }
@@ -43,11 +44,11 @@ lientz(x,
   \item{...}{ if \code{biau = FALSE}, further arguments to be passed to \code{\link{optim}}, or further arguments to be passed to \code{\link{plot.default}}.  }
 }
 \details{
-Lientz function is the smallest non-negative quantity \eqn{S(x,\beta)}{S(x,b)}, 
+The Lientz function is the smallest non-negative quantity \eqn{S(x,\beta)}{S(x,b)}, 
 where \eqn{\beta}{b} = \code{bw}, such that 
 \deqn{F(x+S(x,\beta)) - F(x-S(x,\beta)) \geq \beta.}{F(x+S(x,b)) - F(x-S(x,b)) >= b.}
 Lientz (1970) provided a way to estimate \eqn{S(x,\beta)}{S(x,b)}; this estimate 
-is what we call the empirical Lientz function.
+is what we call the empirical Lientz function. % a ajouter : le choix de beta : petit
 }
 \value{
 \code{lientz} returns an object of class \code{c("lientz", "function")}; this is a 
@@ -57,7 +58,7 @@ function with additional attributes:
   \item{call}{ the call which produced the result }
   
 \code{mlv.lientz} returns a numeric value, the mode estimate. If \code{biau = TRUE}, 
-the \code{x} value minimizing Lientz empirical function is returned. Otherwise, 
+the \code{x} value minimizing the Lientz empirical function is returned. Otherwise, 
 the \code{\link{optim}} method is used to perform minimization, and the  
 attributes: 'value', 'counts', 'convergence' and 'message', coming from 
 the \code{\link{optim}} method, are added to the result.
@@ -88,14 +89,17 @@ This returns an object of class \code{\link{mlv}}.
 \examples{
 # Unimodal distribution
 x <- rbeta(1000,23,4)
+
 ## True mode
 betaMode(23, 4)
+
 ## Lientz object
 f <- lientz(x, 0.2)
 print(f)
-plot(f, zoom = FALSE)
+plot(f)
+
 ## Estimate of the mode
-mlv(f)              # optim(mlv.shorth(x), fn = f)
+mlv(f)              # optim(shorth(x), fn = f)
 mlv(f, biau = TRUE) # x[which.min(f(x))]
 M <- mlv(x, method = "lientz", bw = 0.2)
 print(M)

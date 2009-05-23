@@ -12,9 +12,9 @@
 This function computes Bickel's half range mode estimator described in Bickel (2002).
 }
 \usage{
-hrm(x, 
-    bw = NULL, 
-    ...)
+  hrm(x, 
+      bw = NULL, 
+      ...)
 }
 \arguments{
   \item{x}{ numeric. Vector of observations }
@@ -47,7 +47,7 @@ This returns an object of class \code{\link{mlv}}.
     Comparison of mode estimation methods and application in molecular clock analysis.
     \emph{BMC Bioinformatics}, \bold{4}:31-41.
     
-    \item Bickel D.R. et Frühwirth R. (2006).
+    \item Bickel D.R. et Fruehwirth R. (2006).
     On a Fast, Robust Estimator of the Mode: Comparisons to Other Robust Estimators with Applications.
     \emph{Computational Statistics and Data Analysis}, \bold{50}(12):3500-3530.
   }
@@ -60,8 +60,10 @@ The algorithm is described in Bickel (2002). }
 \examples{
 # Unimodal distribution
 x <- rgamma(1000, shape = 31.9)
+
 ## True mode
 gammaMode(shape = 31.9)
+
 ## Estimate of the mode
 hrm(x, bw = 0.4)
 M <- mlv(x, method = "hrm", bw = 0.4)

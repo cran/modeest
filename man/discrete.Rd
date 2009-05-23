@@ -9,7 +9,7 @@
   This function returns the most frequent value(s) in a given numerical vector.
 }
 \usage{
-mfv(x, ...)
+  mfv(x, ...)
 }
 \arguments{
   \item{x}{ numeric. Vector of observations. }
@@ -29,20 +29,24 @@ This returns an object of class \code{\link{mlv}}.
 }
 \author{ Paul Poncet \email{paulponcet@yahoo.fr} }
 \seealso{ \code{\link{mlv}} for general mode estimation;
- \code{\link{geomMode}}, \code{\link{poisMode}}, or \code{\link{distribMode}} for computation of the mode of the classical distributions}
+ \code{\link{geomMode}}, \code{\link{poisMode}}, etc. for computation of the mode of the usual discrete distributions}
 \examples{
 # Unimodal distribution
 x <- rbinom(100, size = 10, prob = 0.8)
+
 ## True mode
 binomMode(size = 10, prob = 0.8)
+
 ## Most frequent value
 mfv(x)
 mlv(x, method = "discrete")
 
 # Bimodal distribution
 x <- rpois(100, lambda = 7)
+
 ## True mode
 poisMode(lambda = 7)
+
 ## Most frequent value
 mfv(x)
 M <- mlv(x, method = "discrete")

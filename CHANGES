@@ -1,0 +1,12 @@
+
+CHANGES IN VERSION 1.09
+
+  o the Asselin de Beauville mode estimator has been added. 
+  o a function 'as.numeric.mlv' is provided. 
+  o methods for the Chernoff distribution are provisionally suppressed, because 
+  of their lack of efficiency. 
+  o the DIP statistic is no longer provided. 
+  o in function 'tsybakov', the argument 'djeddour' is renamed 'dmp'. 
+  o in functions 'parzen' and 'mlv.density', the argument 'biau' is renamed 'abc'. 
+
+

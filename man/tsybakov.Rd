@@ -2,7 +2,7 @@
 %\alias{mlv.tsybakov}
 \alias{tsybakov}
 \alias{Tsybakov}
-%\alias{mlv.djeddour}
+%\alias{mlv.dmp}
 %\alias{Djeddour}
 %\name{mlv.wtp}
 %\alias{mlv.wtp}
@@ -11,20 +11,20 @@
 %\alias{mlv.shimura}
 %\alias{Shimura}
 
-\title{ Tsybakov Mode Estimator }
+\title{ The Tsybakov Mode Estimator }
 \description{
   This mode estimator is based on a gradient-like recursive algorithm.
-  It includes Mizoguchi-Shimura (1976) mode estimator, based on the 
+  It includes the Mizoguchi-Shimura (1976) mode estimator, based on the 
   window training procedure. 
 }
 \usage{
-tsybakov(x, 
-         bw = NULL, 
-         a, 
-         alpha = 0.9, 
-         kernel = "triangular", 
-         djeddour = TRUE, 
-         par = shorth(x))
+  tsybakov(x, 
+           bw = NULL, 
+           a, 
+           alpha = 0.9, 
+           kernel = "triangular", 
+           dmp = TRUE, 
+           par = shorth(x))
 }
 \arguments{
   \item{x}{ numeric. Vector of observations. }
@@ -35,7 +35,7 @@ tsybakov(x,
     \code{"biweight"}, \code{"cosine"}, \code{"eddy"}, \code{"epanechnikov"}, 
     \code{"gaussian"}, \code{"optcosine"}, \code{"rectangular"}, \code{"triangular"}, \code{"uniform"}.
     See \code{\link{density.default}} for more details on some of these kernels. }
-  \item{djeddour}{ logical. If \code{TRUE}, Djeddour et al. version of the estimate is used. }
+  \item{dmp}{ logical. If \code{TRUE}, Djeddour et al. version of the estimate is used. }
   \item{par}{ numeric. Initial value in the gradient algorithm. 
               Default value is \code{\link{shorth}(x)}. }
 }
@@ -66,11 +66,11 @@ The reasons of this inefficiency are under investigation.
     \emph{Probl. Inf. Transm.}, \bold{26}:31-37.
     
     \item Djeddour K., Mokkadem A. et Pelletier M. (2003).
-    Sur l'estimation récursive du mode et de la valeur modale d'une densité de probabilité.
+    Sur l'estimation recursive du mode et de la valeur modale d'une densite de probabilite.
     \emph{Technical report 105}.
     
     \item Djeddour K., Mokkadem A. et Pelletier M. (2003).
-    Application du principe de moyennisation à l'estimation récursive du mode et de la valeur modale d'une densité de probabilité.
+    Application du principe de moyennisation a l'estimation recursive du mode et de la valeur modale d'une densite de probabilite.
     \emph{Technical report 106}.
   }
 }
@@ -78,8 +78,10 @@ The reasons of this inefficiency are under investigation.
 \seealso{ \code{\link{mlv}} for general mode estimation }
 \examples{
 x <- rbeta(1000, shape1 = 2, shape2 = 5)
+
 ## True mode:
 betaMode(shape1 = 2, shape2 = 5)
+
 ## Estimation:
 tsybakov(x, kernel = "triangular")
 tsybakov(x, kernel = "gaussian", alpha = 0.99)

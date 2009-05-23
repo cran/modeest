@@ -11,8 +11,8 @@
   to be the uniform kernel.
 }
 \usage{
-naive(x, 
-      bw = 1/2)
+  naive(x, 
+        bw = 1/2)
 }
 
 \arguments{
@@ -35,8 +35,8 @@ This returns an object of class \code{\link{mlv}}.
     \emph{Ann. Inst. Statist. Math.}, \bold{16}:31-41.
     
     \item Leclerc J. (1997).
-    Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naïf.
-    \emph{C. R. Acad. Sci. Paris, Série I}, \bold{325}(11):1207-1210.
+    Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naif.
+    \emph{C. R. Acad. Sci. Paris, Serie I}, \bold{325}(11):1207-1210.
     
     \item Leclerc J. (2000).
     Strong limiting behavior of two estimates of the mode: the shorth and the naive estimator. 
@@ -50,8 +50,10 @@ This returns an object of class \code{\link{mlv}}.
 \examples{
 # Unimodal distribution
 x <- rf(10000, df1 = 40, df2 = 30)
+
 ## True mode
 fMode(df1 = 40, df2 = 30)
+
 ## Estimate of the mode
 mean(naive(x, bw = 1/4))
 M <- mlv(x, method = "naive", bw = 1/4)

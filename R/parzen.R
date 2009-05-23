@@ -4,7 +4,7 @@ parzen <-
 function(x,                       # sample (the data)
          bw = NULL,               # bandwidth
          kernel = "gaussian",     # kernel used
-         biau = FALSE,            # if FALSE, 'optim' is used
+         abc = FALSE,             # if FALSE, 'optim' is used
          par = shorth(x),         # initial value used in 'optim'
          optim.method = "BFGS",   # method used in 'optim'
          ...)
@@ -36,12 +36,12 @@ function(x,                       # sample (the data)
     function(z)
     {
       z <- (rep(z,nx) - x)/rep(bw,nx)   #! enlever 'rep' : on ne peut pas appliquer 'fn' à un vecteur 'z' de longueur > 1 !
-                                        #! cela permettrait d'accélérer la méthode 'biau'  
+                                        #! cela permettrait d'accelerer la methode 'abc'  
       z <- do.call(paste(".kernel.", kernel, sep = ""), list(z))$k
       return(sum(z))   #! à modifier
     }
   
-    if (!biau) {
+    if (!abc) {
       maxi <- optim(par, fn, method = optim.method, control=list(fnscale=-1), ...)
       M <- maxi$par
       attr(M, "value") <- maxi$value
@@ -49,7 +49,7 @@ function(x,                       # sample (the data)
       attr(M, "convergence") <- maxi$convergence
       attr(M, "message") <- maxi$message
     } else {
-      f <- sapply(x,FUN=fn) #! pas très rapide... mieux vaut dans ce cas utiliser 'density' je pense
+      f <- sapply(x,FUN=fn) #! pas tres rapide... mieux vaut dans ce cas utiliser 'density' je pense
       M <- x[f == max(f)]
     }
   }
@@ -64,7 +64,7 @@ naive <-
 function(x,
          bw = 1/2)
 {  
-  parzen(x = x, bw = bw, kernel = "uniform", biau = TRUE)
+  parzen(x = x, bw = bw, kernel = "uniform", abc = TRUE)
 }
 
 #pp <- list()

@@ -8,13 +8,13 @@
 Parzen's kernel mode estimator is the value maximizing the kernel density estimate.
 }
 \usage{
-parzen(x, 
-       bw = NULL, 
-       kernel = "gaussian", 
-       biau = FALSE, 
-       par = shorth(x), 
-       optim.method = "BFGS", 
-       ...)
+  parzen(x, 
+         bw = NULL, 
+         kernel = "gaussian", 
+         abc = FALSE, 
+         par = shorth(x), 
+         optim.method = "BFGS", 
+         ...)
 }
 \arguments{
   \item{x}{ numeric. Vector of observations. }
@@ -23,17 +23,17 @@ parzen(x,
     \code{"biweight"}, \code{"cosine"}, \code{"eddy"}, \code{"epanechnikov"}, 
     \code{"gaussian"}, \code{"optcosine"}, \code{"rectangular"}, \code{"triangular"}, \code{"uniform"}. 
     See \code{\link{density.default}} for more details on some of these kernels. }
-  \item{biau}{ logical. If \code{FALSE} (the default), the kernel density estimate  
+  \item{abc}{ logical. If \code{FALSE} (the default), the kernel density estimate  
   is maximised using \code{\link{optim}}. }
   \item{par}{ numeric. The initial value used in \code{\link{optim}}. }
-  \item{optim.method}{ character. If \code{biau = FALSE}, the method used in \code{\link{optim}}. }
-  \item{\dots}{ if \code{biau = FALSE}, further arguments to be passed to \code{\link{optim}}, or further arguments to be passed to \code{\link{plot.default}}. }
+  \item{optim.method}{ character. If \code{abc = FALSE}, the method used in \code{\link{optim}}. }
+  \item{\dots}{ if \code{abc = FALSE}, further arguments to be passed to \code{\link{optim}}. }%, or further arguments to be passed to \code{\link{plot.default}}. }
 }
 \details{
 If \code{kernel = "uniform"}, the \code{\link{naive}} mode estimate is returned.
 }
 \value{
-\code{parzen} returns a numeric value, the mode estimate. If \code{biau = TRUE}, 
+\code{parzen} returns a numeric value, the mode estimate. If \code{abc = TRUE}, 
 the \code{x} value maximizing the density estimate is returned. Otherwise, 
 the \code{\link{optim}} method is used to perform maximization, and the  
 attributes: 'value', 'counts', 'convergence' and 'message', coming from 
@@ -44,7 +44,7 @@ The user should preferentially call \code{parzen} through
  \code{mlv(x, method = "kernel", ...)} or \code{mlv(x, method = "parzen", ...)}.
 This returns an object of class \code{\link{mlv}}.
 
-Presently, \code{mlv.kernel} is quite slow.
+Presently, \code{parzen} is quite slow.
 }
 \references{
   \itemize{ 
@@ -83,8 +83,10 @@ Presently, \code{mlv.kernel} is quite slow.
 \examples{
 # Unimodal distribution
 x <- rlnorm(10000, meanlog = 3.4, sdlog = 0.2)
+
 ## True mode
 lnormMode(meanlog = 3.4, sdlog = 0.2)
+
 ## Estimate of the mode
 M <- mlv(x, method = "kernel", kernel = "gaussian", bw = 0.3, par = shorth(x))
 print(M)

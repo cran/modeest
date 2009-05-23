@@ -3,22 +3,22 @@
 \alias{grenander}
 \alias{Grenander}
 
-\title{ Grenander Mode Estimator }
+\title{ The Grenander Mode Estimator }
 \description{
 This function computes the Grenander mode estimator.
 }
 \usage{
-grenander(x, 
-          bw = NULL, 
-          k, 
-          p, 
-          ...)
+  grenander(x, 
+            bw = NULL, 
+            k, 
+            p, 
+            ...)
 }
 \arguments{
   \item{x}{ numeric. Vector of observations. }
   \item{bw}{ numeric. The bandwidth to be used. Should belong to (0, 1].}
-  \item{k}{ numeric. Paramater 'k' in Grenander mode estimate. }
-  \item{p}{ numeric. Paramater 'p' in Grenander mode estimate. 
+  \item{k}{ numeric. Paramater 'k' in Grenander's mode estimate. }
+  \item{p}{ numeric. Paramater 'p' in Grenander's mode estimate. 
             If \code{p = Inf}, function \code{\link{venter}} is used. }
   \item{...}{ further arguments to be passed to \code{link{venter}} }
 }
@@ -26,7 +26,7 @@ grenander(x,
 The Grenander estimate is defined by
   \deqn{ \frac{ \sum_{j=1}^{n-k} \frac{(x_{j+k} + x_{j})}{2(x_{j+k} - x_{j})^p} }{ \sum_{j=1}^{n-k} \frac{1}{(x_{j+k} - x_{j})^p} } }{ ( sum_{j=1}^{n-k} (x_{j+k} + x_{j})/(2(x_{j+k} - x_{j})^p) ) / ( sum_{j=1}^{n-k} 1/((x_{j+k} - x_{j})^p) ) }
 
-If \eqn{p}{p} tends to infinity, this estimate tends to Venter mode estimate; 
+If \eqn{p}{p} tends to infinity, this estimate tends to the Venter mode estimate; 
 this justifies to call \code{\link{venter}} if \code{p = Inf}.
 
 The user should either give the bandwidth \code{bw} or the argument \code{k}, 
@@ -68,14 +68,19 @@ Paul Poncet \email{paulponcet@yahoo.fr} for the slight modifications introduced.
 \examples{
 # Unimodal distribution
 x <- rnorm(1000, mean = 23, sd = 0.5)
+
 ## True mode
 normMode(mean = 23, sd = 0.5) # (!)
+
 ## Parameter 'k'
 k <- 5
+
 ## Many values of parameter 'p'
 p <- seq(0.1, 4, 0.01)
+
 ## Estimate of the mode with these parameters
 M <- sapply(p, function(pp) grenander(x, p = pp, k = k))
+
 ## Distribution obtained
 plot(density(M), xlim = c(22.5, 23.5))
 }

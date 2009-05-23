@@ -1,17 +1,19 @@
-# Author: Paul Poncet
+# Author: Paul PONCET
 
-.methodList <- c("chernoff",
+.methodList <- c("asselin",
+                 #"chernoff",
                  "density",
                  "discrete",
                  #"devroye",
                  #"ekblom",
+                 "eme",
                  "grenander",
                  "hrm",
                  "hsm",
                  "kernel",
                  #"kim",
                  "lientz",
-                 "lms",
+                 #"lms",
                  "mfv",# most frequent value
                  #"mizoguchi",
                  "naive",
@@ -73,6 +75,7 @@ function(x,
                         skewness = M$skewness,
                         x = x,
                         method = M$method,
+                        bw = NULL, 
                         boot = FALSE,
                         #boot.M = th,
                         call = match.call()),
@@ -100,7 +103,8 @@ function(x,               # sample (the data)
   return(structure(list(M = th,
                         skewness = skewness,
                         x = x,
-                        method = "discrete",
+                        method = "discrete", 
+                        bw = NULL, 
                         boot = FALSE,
                         call = match.call()),
                    class = "mlv"))
@@ -145,6 +149,7 @@ function(x,               # sample (the data)
                         skewness = skewness,
                         x = x,
                         method = "discrete",
+                        bw = NULL, 
                         boot = FALSE,
                         call = match.call()),
                    class = "mlv"))
@@ -158,7 +163,7 @@ function(x,               # sample (the data)
          bw = NULL,       # bandwidth
          method,          # must belong to '.methodList'
          na.rm = FALSE,   # Should NA values in 'x' be removed?
-         dip.test = FALSE,# Should Hartigan's DIP test of unimodality be done?
+         #dip.test = FALSE,# Should Hartigan's DIP test of unimodality be done?
          boot = FALSE,    # Should the mode be bootstrapped?
          R = 100,         # How many bootstrap resamplings?
          B = length(x),   # Size of the bootstrap samples drawn from 'x'
@@ -183,12 +188,12 @@ function(x,               # sample (the data)
     x <- x[x.finite]
   }
 
-  if (!dip.test) {
-    dip.test <- NULL
-  } else {
-    dip.test <- dip(x, full.result = FALSE)
-    cat("function 'dip' from package 'diptest' is used to compute Hartigan's DIP statistic\n")
-  }
+  #if (!dip.test) {
+  #  dip.test <- NULL
+  #} else {
+  #  dip.test <- dip(x, full.result = FALSE)
+  #  cat("function 'dip' from package 'diptest' is used to compute Hartigan's DIP statistic\n")
+  #}
 
   if (missing(method)) {
     warning("argument 'method' is missing. Data are supposed to be continuous. Default method 'shorth' is used")
@@ -208,7 +213,7 @@ function(x,               # sample (the data)
     f <- paste(method, "(b, bw = bw, ...)", sep = "")
     theta <- sapply(1:R, function(z)                        #! VOIR AUSSI le package 'boot' !
                          {
-                           b <- sample(x, B, replace = T)
+                           b <- sample(x, B, replace = TRUE)
                            eval(parse(text = f))
                          })
   }
@@ -224,7 +229,8 @@ function(x,               # sample (the data)
                         skewness = skewness,
                         x = x,
                         method = method,
-                        dip.stat = dip.test,
+                        bw = bw, 
+                        #dip.stat = dip.test,
                         boot = boot,
                         boot.M = theta,
                         call = match.call()),
@@ -238,8 +244,8 @@ function(x,               # sample (the data)
 mlv.density <-
 function(x,
          all = TRUE, 
-         dip.test = FALSE,
-         biau = FALSE,
+         #dip.test = FALSE,
+         abc = FALSE,
          ...)
 {
   if (!inherits(x, "density")) stop("argument 'x' must inherit from class 'density'")
@@ -247,12 +253,12 @@ function(x,
   y <- x$y
   x <- x$x
 
-  if (!dip.test) {
-    dip.test <- NULL
-  } else {
-    #require(diptest)
-    dip.test <- dip(x, full.result = FALSE)
-  }
+  #if (!dip.test) {
+  #  dip.test <- NULL
+  #} else {
+  #  #require(diptest)
+  #  dip.test <- dip(x, full.result = FALSE)
+  #}
   
   idx <- y == max(y)
   M <- x[idx]
@@ -273,7 +279,7 @@ function(x,
                         skewness = skewness,
                         x = x,
                         method = "density",
-                        dip.stat = dip.test,
+                        #dip.stat = dip.test,
                         boot = FALSE,
                         call = match.call()),
                    class = "mlv"))
@@ -340,21 +346,21 @@ function(x, # an object of class 'mlv'
   #xx <- x$x
   skew <- x$skewness
   method <- x$method
-  dip.stat <- x$dip.stat
-  cat("Call:", deparse(x$call), "\n")
+  #dip.stat <- x$dip.stat
 
   if (method == "discrete") {
-    cat("Nature of the data: discrete\n")
+    #cat("Nature of the data: discrete\n")
     cat("Mode (most frequent value):", format(th, digits = digits), "\n")
     cat("Bickel's modal skewness:", format(skew, digits = digits), "\n")
 
   } else {
-    cat("Nature of the data: continuous\n")
-    cat("Mode (Most likely value):", format(th, digits = digits), "\n")
+    #cat("Nature of the data: continuous\n")
+    cat("Mode (most likely value):", format(th, digits = digits), "\n")
     cat("Bickel's modal skewness:", format(skew, digits = digits), "\n")
   }
-
-  if (!is.null(dip.stat)) cat("Hartigan's DIP statistic:", format(dip.stat, digits = digits), "\n")
+  
+  #if (!is.null(dip.stat)) cat("Hartigan's DIP statistic:", format(dip.stat, digits = digits), "\n")
+  cat("Call:", deparse(x$call), "\n")
 
   return(invisible(th))
 }

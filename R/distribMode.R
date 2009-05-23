@@ -108,7 +108,12 @@ function(...)
 
 ### Chernoff distribution
 
-#chernMode    ...
+#chernMode <- 
+#function(location = 0,
+#         ...)
+#{
+#  return(location)
+#} 
 
 #.mlv.chernoff   ...
 
@@ -304,19 +309,33 @@ function(...)
 
 ### Generalized extreme value distribution
 
+#! Changement
+#gevMode <-
+#function(loc=1,
+#         scale=1,
+#         shape=1,
+#         ...)
+#{
+#  if (shape==0) {
+#    M <- loc
+#  } else {
+#    M <- loc + (scale/shape)*(max(0,(1+shape))^(-shape)-1)
+#  }
+#  return(M)  
+#}
+
 gevMode <-
-function(loc=1,
+function(loc=0,
          scale=1,
-         shape=1,
+         shape=0,
          ...)
 {
-  if (shape==0) {
-    M <- loc
-  } else {
-    M <- loc + (scale/shape)*(max(0,(1+shape))^(-shape)-1)
-  }
+  k <- pmax(0,(1+shape))^(-shape)-1 #! il y avait une erreur ici : je mets 'pmax' au lieu de 'max'
+  shape[shape==0] <- Inf
+  M <- loc + (scale/shape)*k
   return(M)  
 }
+
 
 .mlv.gev <-
 function(...)

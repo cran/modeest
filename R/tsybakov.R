@@ -1,3 +1,4 @@
+
 # Author: Paul Poncet
 
 tsybakov <-
@@ -6,8 +7,8 @@ function(x,                        # sample (the data)
          a,                        # parameter 'a'
          alpha = 0.9,              # parameter 'alpha' (if 'a' is missing, a <- (1:length('x'))^(-alpha))
          kernel = "triangular",    # kernel used
-         djeddour = TRUE,          # Should Djeddour et al. method be used?
-         par = shorth(x))      # initial value of the algorithm
+         dmp = TRUE,               # Should Djeddour et al. method be used?
+         par = shorth(x))          # initial value of the algorithm
 {
 #####################################
 # Tsybakov's recursive mode estimator
@@ -29,7 +30,7 @@ function(x,                        # sample (the data)
     
   ## Initialization
   M <- par
-  M.djeddour <- par
+  M.dmp <- par
 
   b <- a/(bw^2)
   p <- bw^3
@@ -37,11 +38,11 @@ function(x,                        # sample (the data)
   
   for (n in 1:nx) {
     M <- M + b[n]*eval(call(K, (M-x[n])/bw[n]))$k
-    M.djeddour <- M.djeddour + p[n]*(M - M.djeddour)
+    M.dmp <- M.dmp + p[n]*(M - M.dmp)
   }
       
   ## Output
-  return(ifelse(djeddour, M.djeddour, M))
+  return(ifelse(dmp, M.dmp, M))
 }
 
 #Tsybakov <- tsybakov
