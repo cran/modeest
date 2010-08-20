@@ -31,6 +31,16 @@ function(x,                       # sample (the data)
     ## Initialization
     nx <- length(x)
     if (is.null(bw)) bw <- bw.SJ(x)
+    if (is.character(bw)) {
+      if (nx < 2) 
+        stop("need at least 2 points to select a bandwidth automatically")
+      bw <- switch(tolower(bw), nrd0 = bw.nrd0(x), nrd = bw.nrd(x), 
+                   ucv = bw.ucv(x), bcv = bw.bcv(x), sj = , 
+                   "sj-ste" = bw.SJ(x, method = "ste"), 
+                   "sj-dpi" = bw.SJ(x, method = "dpi"), 
+                   stop("unknown bandwidth rule"))
+    }
+
     
     fn <-
     function(z)

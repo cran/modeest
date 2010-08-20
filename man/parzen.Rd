@@ -78,7 +78,7 @@ Presently, \code{parzen} is quite slow.
   
   }
 }
-\author{ Paul Poncet \email{paulponcet@yahoo.fr} }
+\author{ P. Poncet }
 \seealso{ \code{\link{mlv}}, \code{\link{naive}} }
 \examples{
 # Unimodal distribution

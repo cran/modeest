@@ -74,7 +74,7 @@ The reasons of this inefficiency are under investigation.
     \emph{Technical report 106}.
   }
 }
-\author{ Paul Poncet \email{paulponcet@yahoo.fr} }
+\author{ P. Poncet }
 \seealso{ \code{\link{mlv}} for general mode estimation }
 \examples{
 x <- rbeta(1000, shape1 = 2, shape2 = 5)

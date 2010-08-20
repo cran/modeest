@@ -4,7 +4,7 @@
 
 \docType{package}
 \title{
-Mode Estimation % - Chernoff Distribution
+Mode Estimation 
 }
 \description{
 This package intends to provide estimators of the mode of univariate 
@@ -19,15 +19,13 @@ For a complete list of functions, use \code{library(help = "modeest")} or \code{
 \tabular{ll}{
 Package: \tab modeest\cr
 Type: \tab Package\cr
-Version: \tab 1.09\cr
-Date: \tab 2009-05-23\cr
+Version: \tab 1.14\cr
+Date: \tab 2010-08-20\cr
 License: \tab GPL version 2 or newer\cr
 }
 }
 \author{
-Paul Poncet \email{paulponcet@yahoo.fr}
-
-Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
+P. Poncet 
 }
 \references{
   \itemize{
@@ -158,6 +156,10 @@ Maintainer: Paul Poncet \email{paulponcet@yahoo.fr}
     \item Hyndman R.J. (1996).
     Computing and graphing highest density regions.
     \emph{Amer. Statist.}, \bold{50}(2):120-126.
+
+    \item Vieu P. (1996).
+    A note on density mode estimation.
+    \emph{Statistics \& Probability Letters}, \bold{26}:297--307.
 
     \item Leclerc J. (1997).
     Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naif.

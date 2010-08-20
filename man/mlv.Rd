@@ -24,7 +24,8 @@ Many different estimates (or methods) are provided:
   \item the half sample mode (\code{\link{HSM}}) and the half range mode (\code{\link{HRM}}), which are iterative versions of the Venter mode estimator, 
   \item \code{\link{Parzen}}'s kernel mode estimator, which is the value maximizing the kernel density estimate, 
   \item the \code{\link{Tsybakov}} mode estimator, based on a gradient-like recursive algorithm, 
-  \item the \code{\link{Asselin}} de Beauville mode estimator. 
+  \item the \code{\link{Asselin}} de Beauville mode estimator, based on a algorithm detecting chains and holes in the sample, 
+  \item the \code{\link{Vieu}} mode estimator. 
 }
 
 \code{mlv} can also be used to compute the mode of a given distribution, with \code{mlv.character}.
@@ -131,7 +132,7 @@ See the references on mode estimation on the \code{\link{modeest-package}}'s pag
 %    \emph{Appl. Statist. (JRSS C)}, \bold{34}:320-325.
 %  }
 }
-\author{ Paul Poncet \email{paulponcet@yahoo.fr} }
+\author{ P. Poncet }
 \seealso{ \code{\link{mfv}},
           \code{\link{Lientz}},
           \code{\link{naive}},
@@ -161,6 +162,7 @@ mlv(x, method = "hsm")
 mlv(x, method = "parzen", kernel = "gaussian")
 mlv(x, method = "tsybakov", kernel = "gaussian")
 mlv(x, method = "asselin", bw = 2/3)
+mlv(x, method = "vieu")
 
 ## Bootstrap
 M <- mlv(x, method = "kernel", boot = TRUE, R = 150)

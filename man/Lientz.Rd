@@ -83,7 +83,7 @@ This returns an object of class \code{\link{mlv}}.
     \emph{SIAM J. Appl. Math.}, \bold{23}:1-5.
   }
 }
-\author{ Paul Poncet \email{paulponcet@yahoo.fr} }
+\author{ P. Poncet }
 \seealso{ \code{\link{mlv}} for general mode estimation;
 \code{\link{shorth}} for the shorth estimate of the mode }
 \examples{

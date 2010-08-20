@@ -1,5 +1,7 @@
 # Author: Paul PONCET
 
+#! a voir : package 'ks', notamment pour les kernel density derivative estimates
+
 .methodList <- c("asselin",
                  #"chernoff",
                  "density",
@@ -14,6 +16,8 @@
                  #"kim",
                  "lientz",
                  #"lms",
+                 #"logspline", # cf. package logspline
+                 "meanshift",
                  "mfv",# most frequent value
                  #"mizoguchi",
                  "naive",
@@ -22,7 +26,8 @@
                  "shorth",
                  #"splines",                 
                  "tsybakov",
-                 "venter")
+                 "venter", 
+                 "vieu")
                  #"wavelet",
                  #"wtp")
 

@@ -64,12 +64,12 @@ An attribute which reports the method used is added.
 \author{
 Diethelm Wuertz and other authors for the original \code{skewness} function from 
 package \pkg{fBasics}; \cr
-Paul Poncet \email{paulponcet@yahoo.fr} for the slight modification introduced.
+P. Poncet for the slight modification introduced.
 }
 
-\seealso{ \code{\link[fBasics]{015A-BasicStatistics}} from package \pkg{fBasics}; 
+\seealso{ package \pkg{fBasics}; 
 \code{\link{mlv}} for general mode estimation;
-\code{\link{shorth}} for the shorth estimate of the mode;
+\code{\link{shorth}} for the shorth estimate of the mode
 %\code{\link{skewness.data.frame}};
 %\code{\link{skewness.POSIXct}};
 %\code{\link{skewness.POSIXlt}}

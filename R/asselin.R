@@ -2,7 +2,7 @@
 #! regarder la fonction na.contiguous, je crois qu'elle fait exactement ce qu'il faut...
 asselin <-
 function(x,
-         bw = 1, # bw = 1 donne une chaine modale longue, bw < 1 est plus sévère 
+         bw = NULL, # bw = 1 donne une chaine modale longue, bw < 1 est plus sévère 
          ...)
 {
 

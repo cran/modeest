@@ -44,7 +44,7 @@ This returns an object of class \code{\link{mlv}}.
   }
 }
 
-\author{ Paul Poncet \email{paulponcet@yahoo.fr} }
+\author{ P. Poncet }
 \seealso{ \code{\link{mlv}} for general mode estimation;
 \code{\link{parzen}} for Parzen's kernel mode estimation }
 \examples{

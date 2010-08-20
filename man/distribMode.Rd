@@ -36,50 +36,130 @@ These functions return the mode of the main probability distributions implemente
 
 \usage{
   ## Continuous distributions
-  betaMode(shape1, shape2, ncp = 0) # Beta
-  cauchyMode(location = 0, ...) # Cauchy
-  chisqMode(df, ncp = 0) # Chisquare
-  expMode(...) # Exponentiel
-  fMode(df1, df2) # F
-  frechetMode(loc = 0, scale = 1, shape = 1, ...) # Frechet (package 'evd')
-  gammaMode(shape, rate = 1, scale = 1/rate) # Gamma
-  normMode(mean = 0, ...) # Normal (Gaussian)
-  gevMode(loc = 0, scale = 1, shape = 0, ...) # Generalised Extreme Value (package 'evd')
+  
+  # Beta
+  betaMode(shape1, shape2, ncp = 0) 
+  
+  # Cauchy
+  cauchyMode(location = 0, ...) 
+  
+  # Chisquare
+  chisqMode(df, ncp = 0) 
+  
+  # Exponentiel
+  expMode(...) 
+  
+  # F
+  fMode(df1, df2) 
+  
+  # Frechet (package 'evd')
+  frechetMode(loc = 0, scale = 1, shape = 1, ...) 
+  
+  # Gamma
+  gammaMode(shape, rate = 1, scale = 1/rate) 
+  
+  # Normal (Gaussian)
+  normMode(mean = 0, ...) 
+  
+  # Generalised Extreme Value (package 'evd')
+  gevMode(loc = 0, scale = 1, shape = 0, ...) 
+  
+  # Generalised Hyperbolic (package 'fBasics')
   ghMode(alpha = 1, beta = 0, delta = 1, mu = 0, 
-         lambda = 1, ...) # Generalised Hyperbolic (package 'fBasics')
-  gpdMode(loc = 0, scale = 1, shape = 0, ...) # Generalised Pareto (package 'evd')
-  gumbelMode(loc = 0, ...) # Gumbel (package 'evd')
+         lambda = 1, ...) 
+  
+  # Generalised Pareto (package 'evd')
+  gpdMode(loc = 0, scale = 1, shape = 0, ...) 
+  
+  # Gumbel (package 'evd')
+  gumbelMode(loc = 0, ...) 
+  
+  # Hyperbolic (package 'fBasics')
   hypMode(alpha = 1, beta = 0, delta = 1, mu = 0, 
-          pm = c(1, 2, 3, 4)) # Hyperbolic (package 'fBasics')
-  logisMode(location = 0, ...) # Logistic
-  lnormMode(meanlog = 0, sdlog = 1) # Lognormal
-  nigMode(alpha = 1, beta = 0, delta = 1, 
-          mu = 0, ...) # Normal Inverse Gaussian (package 'fBasics')
-  stableMode(alpha, beta, gamma = 1, delta = 0, pm = 0, ...) # Stable (package 'fBasics')
-  symstbMode(...) # Symmetric stable (package 'fBasics')
-  rweibullMode(loc = 0, scale = 1, shape = 1, ...) # Negative Weibull (package 'evd')
-  tMode(df, ncp = 0) # T (Student)
-  unifMode(min = 0, max = 1) # Uniform
-  weibullMode(shape, scale = 1, ...) # Weibull
+          pm = c(1, 2, 3, 4)) 
+  
+  # Logistic
+  logisMode(location = 0, ...) 
+  
+  # Lognormal
+  lnormMode(meanlog = 0, sdlog = 1) 
+  
+  # Normal Inverse Gaussian (package 'fBasics')
+  nigMode(alpha = 1, beta = 0, delta = 1, mu = 0, ...) 
+  
+  # Stable (package 'fBasics')
+  stableMode(alpha, beta, gamma = 1, delta = 0, pm = 0, ...) 
+  
+  # Symmetric stable (package 'fBasics')
+  symstbMode(...)
+  
+  # Negative Weibull (package 'evd')
+  rweibullMode(loc = 0, scale = 1, shape = 1, ...) 
+  
+  # T (Student)
+  tMode(df, ncp = 0) 
+  
+  # Uniform
+  unifMode(min = 0, max = 1)
+
+  # Weibull
+  weibullMode(shape, scale = 1, ...)
   
   ## Discrete distributions
-  bernMode(prob) # Bernoulli
-  binomMode(size, prob) # Binomial
-  geomMode(...) # Geometric
-  hyperMode(m, n, k, ...) # Hypergeometric
-  nbinomMode(size, prob, mu) # Negative Binomial
-  poisMode(lambda) # Poisson
+  
+  # Bernoulli
+  bernMode(prob) 
+  
+  # Binomial
+  binomMode(size, prob) 
+  
+  # Geometric
+  geomMode(...) 
+  
+  # Hypergeometric
+  hyperMode(m, n, k, ...) 
+  
+  # Negative Binomial
+  nbinomMode(size, prob, mu) 
+  
+  # Poisson
+  poisMode(lambda) 
 }
 \arguments{
-  \item{shape1, shape2, ncp, location, df, df1, df2, loc, scale, shape,}{}
-  \item{rate, mean, alpha, beta, delta, mu, lambda, pm, meanlog, sdlog,}{}
-  \item{gamma, min, max, prob, size, m, n, k}{ The different arguments are those of the corresponding distribution functions. }
+  \item{shape1}{ First positive parameter of the Beta distribution. }
+  \item{shape2}{ Second positive parameter of the Beta distribution. }
+  \item{ncp}{ Non-centrality parameter of the Beta, Chisquare, and Student distributions. }
+  \item{location}{ Location parameter of the Cauchy and Logistic distributions. }
+  \item{df}{ Degree of freedom of the Chisquare and Student distributions. }
+  \item{df1}{ First degree of freedom of the F distribution. }
+  \item{df2}{ Second degree of freedom of the F distribution. }
+  \item{loc}{ Location parameter of the Fr\'echet, Generalized Extreme Value, Generalized Pareto, Gumbel, and Negative Weibull distributions. }
+  \item{scale}{ Scale parameter of the Fr\'echet, Gamma, Generalized Extreme Value, Generalized Pareto, Negative Weibull, and Weibull distributions. }
+  \item{shape}{ Shape parameter of the Fr\'echet, Gamma, Generalized Extreme Value, Generalized Pareto, Negative Weibull, and Weibull distributions. }
+  \item{rate}{ An alternative way to specify the scale of the Gamma distribution. }
+  \item{mean}{ Mean of the Normal distribution. }
+  \item{alpha}{ Parameter of the Hyperbolic, Generalised Hyperbolic, Stable and Normal Inverse Gaussian distributions. See the package \pkg{fBasics} for more details. }
+  \item{beta}{ Parameter of the Hyperbolic, Generalised Hyperbolic, Stable and Normal Inverse Gaussian distributions. See the package \pkg{fBasics} for more details. }
+  \item{delta}{ Parameter of the Hyperbolic, Generalised Hyperbolic, Stable and Normal Inverse Gaussian distributions. See the package \pkg{fBasics} for more details. }
+  \item{mu}{ Parameter of the Hyperbolic, Generalised Hyperbolic, Normal Inverse Gaussian, and Negative binomial distributions. See the package \pkg{fBasics} for more details. }
+  \item{lambda}{ Vector of (non-negative) means of the Poisson distribution. }
+  \item{pm}{ Integer value for the selection of the parameterization of the Hyperbolic and Stable distributions. See the package \pkg{fBasics} for more details. }
+  \item{meanlog}{ Mean of the Lognormal distribution on the log scale. }
+  \item{sdlog}{ Standard deviation of the Lognormal distribution on the log scale. }
+  \item{gamma}{ Scale parameter of the Stable distribution. See the package \pkg{fBasics} for more details. }
+  \item{min}{ Lower limit of the Uniform distribution. Must be finite. }
+  \item{max}{ Upper limit of the Uniform distribution. Must be finite. }
+  \item{prob}{ Probability of success on each trial (between 0 and 1), used in the Bernoulli, Binomial and Negative Binomial distributions. }
+  \item{size}{ Number of trials (zero or more), used in the Binomial and Negative Binomial distributions. }
+  \item{m}{ Number of white balls in the urn for the Hypergeometric distribution. }
+  \item{n}{ Number of black balls in the urn for the Hypergeometric distribution. }
+  \item{k}{ Number of balls drawn from the urn for the Hypergeometric distribution. }
   \item{...}{ Further arguments, which will be ignored. }
 }
 \value{
 A numeric value is returned, the (true) mode of the distribution.
 }
-\author{ Paul Poncet \email{paulponcet@yahoo.fr}, 
+\author{ Paul Poncet, 
 except for \code{hypMode} and \code{stableMode} written by Diethelm Wuertz, see package \pkg{fBasics}.}
 \note{
 Some functions like \code{normMode} or \code{cauchyMode}, which are related 

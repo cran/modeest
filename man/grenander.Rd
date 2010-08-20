@@ -61,7 +61,7 @@ This returns an object of class \code{\link{mlv}}.
   }
 }
 \author{ D.R. Bickel for the original code, \cr
-Paul Poncet \email{paulponcet@yahoo.fr} for the slight modifications introduced.
+P. Poncet for the slight modifications introduced.
 }
 \seealso{ \code{\link{mlv}} for general mode estimation;
 \code{\link{venter}} for the Venter mode estimate }

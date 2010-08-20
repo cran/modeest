@@ -79,7 +79,7 @@ This returns an object of class \code{\link{mlv}}.
     %\item Bickel ??
   }
 }
-\author{ Paul Poncet \email{paulponcet@yahoo.fr} }
+\author{ P. Poncet }
 \seealso{ \code{\link{mlv}} for general mode estimation, \code{\link{hsm}} for the half sample mode }
 \examples{
 library(evd)
