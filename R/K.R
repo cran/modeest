@@ -1,4 +1,4 @@
-# Author: Paul Poncet
+# Author: P. Poncet
 
 .kernelList <- c("biweight",
                  "chernoff",

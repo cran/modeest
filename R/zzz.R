@@ -7,7 +7,7 @@
 function(libname,
          pkgname)
 {
-  message("\nThis is package 'modeest' written by Paul PONCET.\nFor a complete list of functions, use 'library(help = \"modeest\")' or 'help.start()'.\n")
+  packageStartupMessage("\nThis is package 'modeest' written by P. PONCET.\nFor a complete list of functions, use 'library(help = \"modeest\")' or 'help.start()'.\n")
 }
 
 .onUnload <-

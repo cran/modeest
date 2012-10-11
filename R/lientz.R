@@ -1,4 +1,4 @@
-# Author: Paul Poncet
+# Author: P. Poncet
 
 lientz <-
 function(x,         # sample (the data)
@@ -121,7 +121,7 @@ function(x,             # an object of class 'lientz'
 mlv.lientz <-
 function(x,                       # sample (the data) or object of class 'lientz'
          bw = NULL,               # bandwidth
-         biau = FALSE,            # if FALSE, 'optim' is used
+         abc = FALSE,            # if FALSE, 'optim' is used
          par = shorth(x),         # initial value used in 'optim'
          optim.method = "BFGS",   # method used in 'optim'
          ...)
@@ -138,7 +138,7 @@ function(x,                       # sample (the data) or object of class 'lientz
     x <- attr(Sn, "x")
   }
     
-  if (!biau) {
+  if (!abc) {
     mini <- optim(par, fn = Sn, method = optim.method, control=list(fnscale=1),...)
     M <- mini$par
     attr(M, "value") <- mini$value

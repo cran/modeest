@@ -22,13 +22,18 @@ cauchyMode          Mode of the Cauchy distribution
 chisqMode           Mode of the Chisquare distribution
 expMode             Mode of the Exponential distribution
 fMode               Mode of the F distribution
+fiskMode            Mode of the Fisk distribution
 gammaMode           Mode of the Gamma distribution
 normMode            Mode of the Normal distribution
 gevMode             Mode of the Generalised Extreme Value distribution
 ghMode              Mode of the Generalised Hyperbolic distribution
+gompertzMode        Mode of the Gombertz distribution
 gpdMode             Mode of the Generalised Pareto distribution
 gumbelMode          Mode of the Gumbel distribution
 hypMode             Mode of the Hyperbolic distribution
+koenkerMode         Mode of the Koenker distribution
+kumarMode           Mode of the Kumaraswamy distribution
+laplaceMode         Mode of the Laplace distribution
 logisMode           Mode of the Logistic distribution
 lnormMode           Mode of the Lognormal distribution
 nigMode             Mode of the Negative Inverse Gaussian distribution

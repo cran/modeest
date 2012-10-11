@@ -14,16 +14,14 @@ distribution considered.
 }
 
 \usage{
-  skewness(x, 
-           \dots)
+skewness(x, 
+         \dots)
+
   \method{skewness}{default}(x, 
-           na.rm = FALSE, 
-           method = c("moment", "fisher", "bickel"), 
-           M = shorth(x), 
-           \dots)
-  %\method{skewness}{data.frame}(x, \dots)
-  %\method{skewness}{POSIXct}(x, \dots)
-  %\method{skewness}{POSIXlt}(x, \dots)
+         na.rm = FALSE, 
+         method = c("moment", "fisher", "bickel"), 
+         M = shorth(x), 
+         \dots)
 }
 
 

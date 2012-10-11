@@ -12,36 +12,35 @@
   A 'plot' and a 'print' methods are provided. 
 }
 \usage{
-  lientz(x, 
-         bw = NULL)
-  %mlv.lientz(x, bw = NULL, biau = FALSE, par = shorth(x), optim.method = "BFGS", ...)
+lientz(x, 
+       bw = NULL)
   
   \method{mlv}{lientz}(x, 
-      bw = NULL, 
-      biau = FALSE, 
-      par = shorth(x), 
-      optim.method = "BFGS", 
-      ...)
+    bw = NULL, 
+    abc = FALSE, 
+    par = shorth(x), 
+    optim.method = "BFGS", 
+    ...)
            
   \method{plot}{lientz}(x, 
-       zoom = FALSE, 
-       ...)
+     zoom = FALSE, 
+     ...)
        
   \method{print}{lientz}(x, 
-        digits = NULL, 
-        ...)
+      digits = NULL, 
+      ...)
 }
 \arguments{
   \item{x}{ numeric (vector of observations) or an object of class \code{"lientz"}. }
   \item{bw}{ numeric. The smoothing bandwidth to be used. 
   Should belong to (0, 1). Parameter 'beta' in Lientz (1970) function. }
-  \item{biau}{ logical. If \code{FALSE} (the default), the Lientz empirical function 
+  \item{abc}{ logical. If \code{FALSE} (the default), the Lientz empirical function 
   is minimised using \code{\link{optim}}. }
   \item{par}{ numeric. The initial value used in \code{\link{optim}}. }
-  \item{optim.method}{ character. If \code{biau = FALSE}, the method used in \code{\link{optim}}. }  
+  \item{optim.method}{ character. If \code{abc = FALSE}, the method used in \code{\link{optim}}. }  
   \item{zoom}{ logical. If \code{TRUE}, one can zoom on the graph created. }
   \item{digits}{ numeric. Number of digits to be printed. }
-  \item{...}{ if \code{biau = FALSE}, further arguments to be passed to \code{\link{optim}}, or further arguments to be passed to \code{\link{plot.default}}.  }
+  \item{...}{ if \code{abc = FALSE}, further arguments to be passed to \code{\link{optim}}, or further arguments to be passed to \code{\link{plot.default}}.  }
 }
 \details{
 The Lientz function is the smallest non-negative quantity \eqn{S(x,\beta)}{S(x,b)}, 
@@ -57,7 +56,7 @@ function with additional attributes:
   \item{bw}{ the \code{bw} argument }
   \item{call}{ the call which produced the result }
   
-\code{mlv.lientz} returns a numeric value, the mode estimate. If \code{biau = TRUE}, 
+\code{mlv.lientz} returns a numeric value, the mode estimate. If \code{abc = TRUE}, 
 the \code{x} value minimizing the Lientz empirical function is returned. Otherwise, 
 the \code{\link{optim}} method is used to perform minimization, and the  
 attributes: 'value', 'counts', 'convergence' and 'message', coming from 
@@ -100,7 +99,7 @@ plot(f)
 
 ## Estimate of the mode
 mlv(f)              # optim(shorth(x), fn = f)
-mlv(f, biau = TRUE) # x[which.min(f(x))]
+mlv(f, abc = TRUE) # x[which.min(f(x))]
 M <- mlv(x, method = "lientz", bw = 0.2)
 print(M)
 plot(M)

@@ -19,8 +19,8 @@ For a complete list of functions, use \code{library(help = "modeest")} or \code{
 \tabular{ll}{
 Package: \tab modeest\cr
 Type: \tab Package\cr
-Version: \tab 1.14\cr
-Date: \tab 2010-08-20\cr
+Version: \tab 1.15\cr
+Date: \tab 2012-09-30\cr
 License: \tab GPL version 2 or newer\cr
 }
 }
@@ -61,11 +61,11 @@ P. Poncet
     Results on nonparametric modal intervals.
     \emph{SIAM J. Appl. Math.}, \bold{19}:356-366.
 
-    \item Wegman E.J. (1971).           % a revoir !!
+    \item Wegman E.J. (1971).% a revoir !!
     A note on the estimation of the mode.
     \emph{Ann. Math. Statist.}, \bold{42}(6):1909-1915.
 
-    \item Yamato H. (1971).             % a revoir !!
+    \item Yamato H. (1971). % a revoir !!
     Sequential estimation of a continuous probability density function and mode.
     \emph{Bull. Math. Statist.}, \bold{14}:1-12.
 
@@ -89,7 +89,7 @@ P. Poncet
     Uniform consistency of a histogram density estimator and modal estimation.
     \emph{Commun. Statist.}, \bold{4}:303-315.
 
-    \item Sager T.W. (1975).               % a revoir !!
+    \item Sager T.W. (1975).% a revoir !!
     Consistency in nonparametric estimation of the mode.
     \emph{Ann. Statist.}, \bold{3}(3):698-706.
    
@@ -109,15 +109,15 @@ P. Poncet
     Estimation non parametrique de la densite et du mode, exemple de la distribution Gamma.
     \emph{Revue de Statistique Appliquee}, \bold{26}(3):47-70.
 
-    \item Sager T.W. (1978).     % a revoir !!
+    \item Sager T.W. (1978).% a revoir !!
     Estimation of a multivariate mode.
     \emph{Ann. Statist.}, \bold{6}:802-812.
 
-    \item Devroye L. (1979).     % a revoir !!
+    \item Devroye L. (1979).% a revoir !!
     Recursive estimation of the mode of a multivariate density.
     \emph{Canadian J. Statist.}, \bold{7}(2):159-167.
 
-    \item Sager T.W. (1979).    % a revoir !!
+    \item Sager T.W. (1979).% a revoir !!
     An iterative procedure for estimating a multivariate mode and isopleth.
     \emph{J. Amer. Statist. Assoc.}, \bold{74}(366):329-339.
 
@@ -177,10 +177,10 @@ P. Poncet
     Strong limiting behavior of two estimates of the mode: the shorth and the naive estimator.
     \emph{Statistics and Decisions}, \bold{18}(4).
 
-    \item Groeneboom P.and Wellner J.A. (2001).
-    Computing Chernoff's distribution.
-    \emph{J. Comput. Graph. Statist.}, \bold{10}:388-400.
-    
+    %\item Groeneboom P.and Wellner J.A. (2001).
+    %Computing Chernoff's distribution.
+    %\emph{J. Comput. Graph. Statist.}, \bold{10}:388-400.
+    %
     \item Shoung J.M. and Zhang C.H. (2001).
     Least squares estimators of the mode of a unimodal regression function.
     \emph{Ann. Statist.}, \bold{29}(3):648-665.
@@ -212,7 +212,7 @@ P. Poncet
     %\item Ziegler K. (2003).
     %On the asymptotic normality of kernel regression estimators of the mode in the nonparametric random design model.
     %\emph{Journal of Statistical Planning and Inference}, \bold{115}:123-144.
-
+    %
     \item Herrmann E. and Ziegler K. (2004).
     Rates of consistency for nonparametric estimation of the mode in absence of smoothness assumptions.
     \emph{Statistics and Probability Letters}, \bold{68}:359-368.

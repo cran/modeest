@@ -1,5 +1,5 @@
 # Author: D.R. Bickel
-# Modications: Paul Poncet
+# Modications: P. Poncet
 hsm <-
 function(x,                  # sample (the data)
          bw = NULL,          # bandwidth (fraction of the observations to consider)
@@ -42,7 +42,12 @@ function(x,                  # sample (the data)
     ## Ties?
     if(length(i) > 1) i <- .deal.ties(ny, i, tie.action, tie.limit) 
    
-    y <- ifelse(diffs[i]==0, y[i], y[i:(i+k)])
+    if (diffs[i]==0) {
+      y <- y[i]
+    } else {
+      y <- y[i:(i+k)]
+    }
+    #y <- ifelse(diffs[i]==0, y[i], y[i:(i+k)])
   }
   if (length(y) == 3) {
     z <- 2*y[2] - y[1] - y[3]

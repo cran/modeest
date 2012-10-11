@@ -1,5 +1,5 @@
 
-# Author: Paul Poncet
+# Author: P. Poncet
 
 tsybakov <-
 function(x,                        # sample (the data)
@@ -14,7 +14,7 @@ function(x,                        # sample (the data)
 # Tsybakov's recursive mode estimator
 #####################################
 
-  if (pmatch(tolower(kernel), "normal", no = 0)) {
+  if (pmatch(tolower(kernel), "normal", nomatch = 0)) {
     kernel <- "gaussian"
   } else kernel <- match.arg(tolower(kernel), .kernelList) # '.kernelList' is defined in 'K.R'
   

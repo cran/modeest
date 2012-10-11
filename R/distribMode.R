@@ -1,4 +1,4 @@
-# Author : Paul Poncet
+# Author : P. Poncet
 
 ########################################################################
 # Mode (most likely value) of some continuous and discrete distributions
@@ -10,16 +10,19 @@
                   "exp",
                   #"extreme",
                   "f",
+                  "fisk", 
                   "frechet",
                   "gamma",
                   "norm",
                   "gh",
                   "gev",
+                  "gompertz", 
                   "gpd",
                   "gumbel",
                   "hyp",
-                  #"kumaraswamy",
-                  #"laplace",
+                  "kumar",
+                  "laplace",
+                  "koenker", 
                   "logis",
                   #"log_logistic",
                   "lnorm",
@@ -29,7 +32,7 @@
                   #"rayleigh",
                   "rweibull",
                   "stable",
-                  "symstb",
+                  #"symstb",
                   "t",
                   "unif",
                   "weibull",
@@ -230,6 +233,30 @@ function(...)
 
 #------------------------------------------------------
 
+### Fisk distribution
+
+fiskMode <- 
+function(shape1.a, 
+         scale = 1)
+{
+  return(scale*((shape1.a-1)/(shape1.a+1))^(1/shape1.a))
+}
+
+.mlv.fisk <-
+function(...)
+{
+  M <- fiskMode(...)
+  return(invisible(structure(list(M = M,
+                                  skewness = 1 - 2*pfisk(M, ...),
+                                  x = "fisk",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
+
+
+#------------------------------------------------------
+
 ### Fréchet distribution
 
 frechetMode <-
@@ -414,6 +441,34 @@ function(...)
 
 #------------------------------------------------------
 
+### Gompertz distribution
+
+gompertzMode <-
+function(shape,
+         scale=1)
+{
+  if (shape < scale) {
+    M <- log(scale/shape)/scale
+  } else {
+    M <- 0
+  }
+  return(M)
+}
+
+.mlv.gompertz <-
+function(...)
+{
+  M <- gompertzMode(...)
+  return(invisible(structure(list(M = M,
+                                  skewness = 1 - 2*pgompertz(M, ...),
+                                  x = "gompertz",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
+
+#------------------------------------------------------
+
 ### Gumbel distribution
 
 gumbelMode <-
@@ -508,51 +563,74 @@ function(...)
 
 #------------------------------------------------------
 
+### Koenker distribution 
+
+koenkerMode <- 
+function(location = 0, 
+         ...)
+{
+  return(location)
+}
+
+.mlv.koenker <- 
+function(...)
+{
+  M <- koenkerMode(...)
+  return(invisible(structure(list(M = M,
+                                  skewness = 1 - 2*pkoenker(M, ...),
+                                  x = "koenker",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
+
+
+#------------------------------------------------------
+
 ### Kumaraswamy distribution
 
-#kumaMode <-
-#function(a,
-#         b,
-#         ...)
-#{
-#  return((a-1)/(a*b - 1)^(1/a))
-#}
+kumarMode <-
+function(shape1,
+         shape2)
+{
+  return((shape1-1)/(shape1*shape2 - 1)^(1/shape1))
+}
 
-#.mlv.kumaraswamy <-
-#function(...)
-#{
-#  M <- kumaMode(...)
-#  return(invisible(structure(list(M = M,
-#                                  skewness = 1 - 2*NA,
-#                                  x = "kumaraswamy",
-#                                  method = "continuous",
-#                                  call = match.call()),
-#                             class = "mlv")))
-#}
+.mlv.kumar <-
+function(...)
+{
+  M <- kumarMode(...)
+  return(invisible(structure(list(M = M,
+                                  skewness = 1 - 2*pkumar(M, ...),
+                                  x = "kumaraswamy",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
 
 
 #------------------------------------------------------
 
 ### Laplace distribution
 
-#laplaceMode <-
-#function(loc,
-#         ...)
-#{
-#  return(loc)
-#}
+laplaceMode <-
+function(location = 0,
+         ...)
+{
+  return(location)
+}
 
-#.mlv.laplace <-
-#function(...)
-#{
-#  M <- laplaceMode(...)
-#  return(invisible(structure(list(M = M,
-#                                  skewness = 1 - 2*NA,
-#                                  x = "laplace",
-#                                  method = "continuous",
-#                                  call = match.call()),
-#                             class = "mlv")))
-#}
+.mlv.laplace <-
+function(...)
+{
+  M <- laplaceMode(...)
+  return(invisible(structure(list(M = M,
+                                  skewness = 1 - 2*plaplace(M, ...),
+                                  x = "laplace",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
 
 
 #------------------------------------------------------
@@ -731,7 +809,7 @@ function(...)
 
 ### Skewed stable distribution
 
-## The following function is taken from package 'fBasics'
+## The following function is taken from package 'stabledist'
 
 stableMode <-
 function(alpha,
@@ -778,23 +856,23 @@ function(...)
 
 ### Symmetric stable distribution
 
-symstbMode <-
-function(...)
-{
-  return(0)
-}
-
-.mlv.symstb <-
-function(...)
-{
-  M <- symstbMode(...)
-  return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*psymstb(M, ...),
-                                  x = "symmetric_stable",
-                                  method = "continuous",
-                                  call = match.call()),
-                             class = "mlv")))
-}
+#symstbMode <-
+#function(...)
+#{
+#  return(0)
+#}
+#
+#.mlv.symstb <-
+#function(...)
+#{
+#  M <- symstbMode(...)
+#  return(invisible(structure(list(M = M,
+#                                  skewness = 1 - 2*psymstb(M, ...),
+#                                  x = "symmetric_stable",
+#                                  method = "continuous",
+#                                  call = match.call()),
+#                             class = "mlv")))
+#}
 
 
 #------------------------------------------------------

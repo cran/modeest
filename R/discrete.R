@@ -1,4 +1,4 @@
-# Author : Paul Poncet
+# Author : P. Poncet
 
 discrete <-
 function(x,   # sample (the data, assumed to come from a discrete law)

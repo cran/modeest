@@ -1,4 +1,8 @@
 
+CHANGES IN VERSION 1.15
+
+  o Thank you to C. Lepoittevin and K. Fijorek who pointed out a misuse of 'ifelse' in the function 'hsm'. This has been corrected. 
+  
 CHANGES IN VERSION 1.09
 
   o the Asselin de Beauville mode estimator has been added. 

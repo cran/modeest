@@ -1,4 +1,4 @@
-# Author: Paul Poncet
+# Author: P. Poncet
 
 parzen <-
 function(x,                       # sample (the data)
@@ -13,7 +13,7 @@ function(x,                       # sample (the data)
 # Mode estimator based on kernel density estimation
 ###################################################
 
-  if (pmatch(tolower(kernel), "normal", no = 0)) {
+  if (pmatch(tolower(kernel), "normal", nomatch = 0)) {
     kernel <- "gaussian"
   } else kernel <- match.arg(tolower(kernel), c(.kernelList, "uniform")) # '.kernelList' is defined in 'K.R'
 

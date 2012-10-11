@@ -1,4 +1,4 @@
-# Author: Paul PONCET
+# Author: P. PONCET
 
 #! a voir : package 'ks', notamment pour les kernel density derivative estimates
 
@@ -203,7 +203,7 @@ function(x,               # sample (the data)
   if (missing(method)) {
     warning("argument 'method' is missing. Data are supposed to be continuous. Default method 'shorth' is used")
     method <- "shorth"
-  } else if (pmatch(tolower(method), c("density", "kernel"), no = 0)) {
+  } else if (pmatch(tolower(method), c("density", "kernel"), nomatch = 0)) {
     method <- "parzen"
   } else method <- match.arg(tolower(method), .methodList) # '.methodList' is defined in 'mlv.R'
   

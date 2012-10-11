@@ -1,4 +1,4 @@
-# Author : Paul Poncet
+# Author : P. Poncet
 #! regarder la fonction na.contiguous, je crois qu'elle fait exactement ce qu'il faut...
 asselin <-
 function(x,

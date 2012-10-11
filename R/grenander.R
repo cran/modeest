@@ -1,5 +1,5 @@
 # Author: D.R. Bickel
-# Modications: Paul Poncet
+# Modications: P. Poncet
 grenander <-
 function(x,        # sample (the data)
          bw = NULL,# fraction of the observations to be considered

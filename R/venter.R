@@ -1,4 +1,4 @@
-# Author: Paul Poncet
+# Author: P. Poncet
 
 venter <-
 function(x,                  # sample (the data)

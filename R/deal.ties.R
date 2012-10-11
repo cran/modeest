@@ -1,5 +1,5 @@
 # Author: Wolfgang Huber and Ligia Pedroso Bras (coauthors of package 'genefilter')
-# Modifications: Paul Poncet
+# Modifications: P. Poncet
 .deal.ties <-
 function(ny,         # length of the data
          i,          # index

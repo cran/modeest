@@ -1,4 +1,4 @@
-# Author: Paul Poncet
+# Author: P. Poncet
 
 .kernel <-
 function(x,

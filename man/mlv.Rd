@@ -33,45 +33,42 @@ Many different estimates (or methods) are provided:
 A 'plot' and a 'print' methods are provided. 
 }
 \usage{
-  mlv(x, 
-      ...)
+mlv(x, 
+    ...)
   
   \method{mlv}{default}(x, 
-      bw = NULL, 
-      method, 
-      na.rm = FALSE, 
-      %dip.test = FALSE, 
-      boot = FALSE, 
-      R = 100, 
-      B = length(x), 
-      ...)
+    bw = NULL, 
+    method, 
+    na.rm = FALSE, 
+    boot = FALSE, 
+    R = 100, 
+    B = length(x), 
+    ...)
       
   \method{mlv}{factor}(x, 
-      ...)
+    ...)
       
   \method{mlv}{integer}(x, 
-      na.rm = FALSE, 
-      ...)
+    na.rm = FALSE, 
+    ...)
       
   \method{mlv}{character}(x, 
-      ...)
+    ...)
       
   \method{mlv}{density}(x, 
-      all = TRUE, 
-      %dip.test = FALSE, 
-      abc = FALSE, 
-      ...)
-  %\method{mlv}{lientz}(x, abc = FALSE, par = shorth(x), optim.method = "BFGS", ...)
+    all = TRUE, 
+    abc = FALSE, 
+    ...)
   
   \method{plot}{mlv}(x, 
-       ...)
+     ...)
        
   \method{print}{mlv}(x, 
-        digits = NULL, 
-        ...)
+      digits = NULL, 
+      ...)
         
   \method{as.numeric}{mlv}(x, 
-             ...)
+           ...)
 }
 \arguments{
   \item{x}{ numeric (vector of observations), or an object of class \code{"factor"}, \code{"integer"}, etc. 

@@ -1,5 +1,5 @@
 # Author : authors of package 'fBasics'
-# Modifications : Paul Poncet
+# Modifications : P. Poncet
 skewness <-
 function (x, ...) 
 {
