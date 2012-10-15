@@ -1,16 +1,20 @@
 
-CHANGES IN VERSION 1.15
+CHANGES IN VERSION 2.1
 
-  o Thank you to C. Lepoittevin and K. Fijorek who pointed out a misuse of 'ifelse' in the function 'hsm'. This has been corrected. 
+  o Thank you to C. Lepoittevin and K. Fijorek who pointed out a misuse of 'ifelse' in the function 'hsm'. 
+  This has been corrected, so now 'hsm' works correctly. 
+  o Functions fiskMode, gompertzMode, koenkerMode, kumarMode, laplaceMode, paralogisticMode, paretoMode, rayleighMode are added. 
+  o Function symstbMode is removed. 
+  o Package modeest now needs to load 'stabledist' and 'VGAM' (in addition to 'stats', 'evd', and 'fBasics'). 
   
 CHANGES IN VERSION 1.09
 
-  o the Asselin de Beauville mode estimator has been added. 
-  o a function 'as.numeric.mlv' is provided. 
-  o methods for the Chernoff distribution are provisionally suppressed, because 
+  o The Asselin de Beauville mode estimator has been added. 
+  o A function 'as.numeric.mlv' is provided. 
+  o Methods for the Chernoff distribution are provisionally suppressed, because 
   of their lack of efficiency. 
-  o the DIP statistic is no longer provided. 
-  o in function 'tsybakov', the argument 'djeddour' is renamed 'dmp'. 
-  o in functions 'parzen' and 'mlv.density', the argument 'biau' is renamed 'abc'. 
+  o The DIP statistic is no longer provided. 
+  o In function 'tsybakov', the argument 'djeddour' is renamed 'dmp'. 
+  o In functions 'parzen' and 'mlv.density', the argument 'biau' is renamed 'abc'. 
 
 

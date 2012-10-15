@@ -40,16 +40,31 @@ function(x,                       # sample (the data)
                    "sj-dpi" = bw.SJ(x, method = "dpi"), 
                    stop("unknown bandwidth rule"))
     }
-
-    
-    fn <-
+   
+    #fn <-
+    #function(z)
+    #{
+    #  z <- (rep(z,nx) - x)/rep(bw,nx)   #! enlever 'rep' : on ne peut pas appliquer 'fn' à un vecteur 'z' de longueur > 1 !
+    #                                    #! cela permettrait d'accelerer la methode 'abc'  
+    #  z <- do.call(paste(".kernel.", kernel, sep = ""), list(z))$k
+    #  return(sum(z))   #! à modifier
+    #}
+  
+    fn <- 
     function(z)
     {
-      z <- (rep(z,nx) - x)/rep(bw,nx)   #! enlever 'rep' : on ne peut pas appliquer 'fn' à un vecteur 'z' de longueur > 1 !
-                                        #! cela permettrait d'accelerer la methode 'abc'  
-      z <- do.call(paste(".kernel.", kernel, sep = ""), list(z))$k
-      return(sum(z))   #! à modifier
+      mat <- z/bw - x/bw
+      k <- do.call(paste(".kernel.", kernel, sep = ""), list(mat))$k
+      return(sum(k))
     }
+    
+    #FN <- 
+    #function(z)
+    #{
+    #  mat <- kronecker(z/bw, t(-x/bw), FUN = "+")
+    #  k <- do.call(paste(".kernel.", kernel, sep = ""), list(mat))$k
+    #  return(rowSums(k))
+    #}
   
     if (!abc) {
       maxi <- optim(par, fn, method = optim.method, control=list(fnscale=-1), ...)
@@ -59,7 +74,8 @@ function(x,                       # sample (the data)
       attr(M, "convergence") <- maxi$convergence
       attr(M, "message") <- maxi$message
     } else {
-      f <- sapply(x,FUN=fn) #! pas tres rapide... mieux vaut dans ce cas utiliser 'density' je pense
+      f <- Vectorize(fn)#FN(x)
+      f <- f(x)
       M <- x[f == max(f)]
     }
   }
@@ -67,8 +83,6 @@ function(x,                       # sample (the data)
   ## Output
   return(M)   
 }
-
-#Parzen <- parzen
 
 naive <-
 function(x,

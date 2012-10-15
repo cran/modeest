@@ -42,7 +42,7 @@ function(x,        # sample (the data)
     if(is.finite(b/a)) {
       M <- b/a
     } else {
-      stop("function 'mlv.grenander' failed. Argument 'p' may be too large")
+      stop("function 'grenander' failed. Argument 'p' may be too large")
     }
   }
   

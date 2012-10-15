@@ -48,17 +48,20 @@ function(x,
 {
   if (!is.character(x)) stop("argument 'x' must be a character")
   x <- tolower(x)
-  if (x == "chisquare") x <- "chisq"
+  if (x %in% c("chisquare", "chisquared")) x <- "chisq"
   if (x == "exponential") x <- "exp"
-  if (x == "generalized_hyperbolic") x <- "gh"
+  if (x %in% c("generalised_hyperbolic", "generalized_hyperbolic")) x <- "gh"
   if (x == "fdist") x <- "f"
   if (x == "gammadist") x <- "gamma"
   if (x %in% c("gaussian", "normal")) x <- "norm"
+  if (x %in% c("generalised_extreme_value", "generalized_extreme_value")) x <- "gev"
+  if (x %in% c("generalised_pareto", "generalized_pareto")) x <- "gpd"
   if (x %in% c("lognormal", "loggaussian")) x <- "lnorm"
   if (x == "hyperbolic") x <- "hyp"
+  if (x == "kumaraswamy") x <- "kumar"
   if (x == "logistic") x <- "logis"
   if (x == "normal_inverse") x <- "nig"
-  if (x == "symmetric_stable") x <- "symstb"
+  #if (x == "symmetric_stable") x <- "symstb"
   if (x == "student") x <- "t"
   if (x == "uniform") x <- "unif"
   if (x == "bernoulli") x <- "bern"

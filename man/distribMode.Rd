@@ -21,6 +21,9 @@
 \alias{logisMode}
 \alias{lnormMode}
 \alias{nigMode}
+\alias{paralogisticMode}
+\alias{paretoMode}
+\alias{rayleighMode}
 \alias{stableMode}
 %\alias{symstbMode}
 \alias{rweibullMode}
@@ -74,7 +77,7 @@ These functions return the mode of the main probability distributions implemente
   
   # Generalised Hyperbolic (package 'fBasics')
   ghMode(alpha = 1, beta = 0, delta = 1, mu = 0, 
-         lambda = 1, ...) 
+         lambda = -1/2, ...) 
 
   # Gompertz (package 'VGAM')
   gompertzMode(shape, scale = 1)
@@ -107,12 +110,21 @@ These functions return the mode of the main probability distributions implemente
   # Normal Inverse Gaussian (package 'fBasics')
   nigMode(alpha = 1, beta = 0, delta = 1, mu = 0, ...) 
   
-  # Stable (package 'fBasics')
+  # Stable (package 'stabledist')
   stableMode(alpha, beta, gamma = 1, delta = 0, pm = 0, ...) 
   
   # Negative Weibull (package 'evd')
   rweibullMode(loc = 0, scale = 1, shape = 1, ...) 
+
+  # Paralogistic (package 'VGAM')
+  paralogisticMode(shape1.a, scale = 1)
   
+  # Pareto (package 'VGAM')
+  paretoMode(location, ...)
+  
+  # Rayleigh (package 'VGAM')
+  rayleighMode(scale = 1)
+
   # T (Student)
   tMode(df, ncp = 0) 
   
@@ -145,14 +157,14 @@ These functions return the mode of the main probability distributions implemente
 \arguments{
   \item{shape1}{ First positive parameter of the Beta and Kumaraswamy distributions. See the package \pkg{VGAM} for more details. }
   \item{shape2}{ Second positive parameter of the Beta and Kumaraswamy distributions. See the package \pkg{VGAM} for more details. }
-  \item{shape1.a}{ Shape parameter of the Fisk distribution. See the package \pkg{VGAM} for more details. }
+  \item{shape1.a}{ Shape parameter of the Fisk and Paralogistic distributions. See the package \pkg{VGAM} for more details. }
   \item{ncp}{ Non-centrality parameter of the Beta, Chisquare, and Student distributions. }
-  \item{location}{ Location parameter of the Cauchy, Koenker, Laplace, and Logistic distributions. See the package \pkg{VGAM} for more details. }
+  \item{location}{ Location parameter of the Cauchy, Koenker, Laplace, Logistic, and Pareto distributions. See the package \pkg{VGAM} for more details. }
   \item{df}{ Degree of freedom of the Chisquare and Student distributions. }
   \item{df1}{ First degree of freedom of the F distribution. }
   \item{df2}{ Second degree of freedom of the F distribution. }
   \item{loc}{ Location parameter of the Fr\'{e}chet, Generalized Extreme Value, Generalized Pareto, Gumbel, and Negative Weibull distributions. }
-  \item{scale}{ Scale parameter of the Fisk, Fr\'{e}chet, Gamma, Generalized Extreme Value, Gompertz, Generalized Pareto, Negative Weibull, and Weibull distributions. See the packages \pkg{evd} and \pkg{VGAM} for more details. }
+  \item{scale}{ Scale parameter of the Fisk, Fr\'{e}chet, Gamma, Generalized Extreme Value, Gompertz, Generalized Pareto, Negative Weibull, Paralogistic, Rayleigh, and Weibull distributions. See the packages \pkg{evd} and \pkg{VGAM} for more details. }
   \item{shape}{ Shape parameter of the Fr\'{e}chet, Gamma, Generalized Extreme Value, Gompertz, Generalized Pareto, Negative Weibull, and Weibull distributions. See the packages \pkg{evd} and \pkg{VGAM} for more details. }
   \item{rate}{ An alternative way to specify the scale of the Gamma distribution. }
   \item{mean}{ Mean of the Normal distribution. }
@@ -177,8 +189,8 @@ These functions return the mode of the main probability distributions implemente
 \value{
 A numeric value is returned, the (true) mode of the distribution.
 }
-\author{ Paul Poncet, 
-except for \code{hypMode} and \code{stableMode} written by Diethelm Wuertz, see package \pkg{stabledist}.}
+\author{ P. Poncet, 
+except for \code{hypMode} written by David Scott, \code{nigMode} and \code{stableMode} written by Diethelm Wuertz; see packages \pkg{fBasics} and \pkg{stabledist}. }
 \note{
 Some functions like \code{normMode} or \code{cauchyMode}, which are related 
 to symmetric distributions, are trivial, but are implemented for exhaustivity.

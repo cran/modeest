@@ -27,6 +27,13 @@ The user should preferentially call \code{mfv} through
  \code{mlv(x, method = "mfv")} (or  \code{mlv(x, method = "discrete")}). 
 This returns an object of class \code{\link{mlv}}.
 }
+\references{
+  \itemize{ 
+    \item Dutta S. and Goswami A. (2010).
+    Mode estimation for discrete distributions.
+    \emph{Mathematical Methods of Statistics}, \bold{19}(4):374--384.
+  }
+}
 \author{ P. Poncet }
 \seealso{ \code{\link{mlv}} for general mode estimation;
  \code{\link{geomMode}}, \code{\link{poisMode}}, etc. for computation of the mode of the usual discrete distributions}

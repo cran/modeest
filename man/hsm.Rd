@@ -49,7 +49,7 @@ This returns an object of class \code{\link{mlv}}.
     An iterative procedure for estimating the mode.
     \emph{J. Amer. Statist. Assoc.}, \bold{69}(348):1012-1016.
     
-    \item Bickel D.R. et Fruehwirth R. (2006).
+    \item Bickel D.R. and Fruehwirth R. (2006).
     On a Fast, Robust Estimator of the Mode: Comparisons to Other Robust Estimators with Applications.
     \emph{Computational Statistics and Data Analysis}, \bold{50}(12):3500-3530.
   }

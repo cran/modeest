@@ -37,7 +37,7 @@ function(x,                        # sample (the data)
   p <- p/cumsum(p)
   
   for (n in 1:nx) {
-    M <- M + b[n]*eval(call(K, (M-x[n])/bw[n]))$k
+    M <- M + b[n]*do.call(K, list((M-x[n])/bw[n]))$k #eval(call(K, (M-x[n])/bw[n]))$k
     M.dmp <- M.dmp + p[n]*(M - M.dmp)
   }
       

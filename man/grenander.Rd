@@ -30,7 +30,7 @@ If \eqn{p}{p} tends to infinity, this estimate tends to the Venter mode estimate
 this justifies to call \code{\link{venter}} if \code{p = Inf}.
 
 The user should either give the bandwidth \code{bw} or the argument \code{k}, 
-\code{k} being taken equal to \code{ceiling(bw*ny) - 1} if missing.
+\code{k} being taken equal to \code{ceiling(bw*n) - 1} if missing.
 }
 \value{
 A numeric value is returned, the mode estimate.

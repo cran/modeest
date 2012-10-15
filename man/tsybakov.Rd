@@ -41,7 +41,7 @@
 }
 \details{
 If \code{bw} is missing, then \code{bw = (1:length(x))^(-1/7)}, which is the default value advised by Djeddour et al (2003).
-If \code{a} is missing, then \code{a = (1:length(x))^(-alpha)} (with \code{alpha = 0.9} is \code{alpha} is missing), which is the default value advised by Djeddour et al (2003).
+If \code{a} is missing, then \code{a = (1:length(x))^(-alpha)} (with \code{alpha = 0.9} if \code{alpha} is missing), which is the default value advised by Djeddour et al (2003).
 }
 \value{
 A numeric value is returned, the mode estimate.

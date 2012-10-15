@@ -28,8 +28,9 @@
                   "lnorm",
                   #"maxwell_boltzmann", 
                   "nig",
-                  #"pareto",
-                  #"rayleigh",
+                  "paralogistic", 
+                  "pareto",
+                  "rayleigh",
                   "rweibull",
                   "stable",
                   #"symstb",
@@ -132,7 +133,10 @@ function(df,
 {
   if (ncp == 0 & df == 0) {
     M <- 0
-  } else if (ncp == 0 & df >= 1) {
+  } else if (ncp == 0 & df %in% c(1,2)) {
+    warning("the density is not continuous at the mode.")
+    M <- 0
+  } else if (ncp == 0 & df >= 3) {
     M <- df - 2
   } else {
     warning("still to be done. 'NA' is returned")
@@ -245,9 +249,13 @@ function(shape1.a,
 .mlv.fisk <-
 function(...)
 {
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
   M <- fiskMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pfisk(M, ...),
+                                  skewness = try(1 - 2*pfisk(M, ...), silent = TRUE),
                                   x = "fisk",
                                   method = "continuous",
                                   call = match.call()),
@@ -272,9 +280,13 @@ function(loc=0,
 .mlv.frechet <-
 function(...)
 {
+  #require(evd)
+  if (!"package:evd" %in% search()) {
+    warning("package 'evd' should be loaded.")
+  }
   M <- frechetMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pfrechet(M, ...),
+                                  skewness = try(1 - 2*pfrechet(M, ...), silent = TRUE),
                                   x = "frechet",
                                   method = "continuous",
                                   call = match.call()),
@@ -367,9 +379,13 @@ function(loc=0,
 .mlv.gev <-
 function(...)
 {
+  #require(evd)
+  if (!"package:evd" %in% search()) {
+    warning("package 'evd' should be loaded.")
+  }
   M <- gevMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pgev(M, ...),
+                                  skewness = try(1 - 2*pgev(M, ...), silent = TRUE),
                                   x = "gev",
                                   method = "continuous",
                                   call = match.call()),
@@ -381,24 +397,33 @@ function(...)
 
 ### Generalized hyperbolic distribution
 
+## The following function is taken from package 'fBasics'
 ghMode <-
 function(alpha = 1,
          beta = 0,
          delta = 1,
          mu = 0,
-         lambda = 1,
+         lambda = -1/2,
          ...)
 {
-  warning("still to be done. 'NA' is returned")
-  return(NA)  
+  min <- qgh(0.01, alpha, beta, delta, mu, lambda)
+  max <- qgh(0.99, alpha, beta, delta, mu, lambda)
+  M <- optimize(f = dgh, interval = c(min, max), alpha = alpha, 
+      beta = beta, delta = delta, mu = mu, lambda = lambda, 
+      maximum = TRUE, tol = .Machine$double.eps)$maximum
+  return(M)
 }
 
 .mlv.gh <-
 function(...)
 {
+  #require(fBasics)
+  if (!"package:fBasics" %in% search()) {
+    warning("package 'fBasics' should be loaded.")
+  }
   M <- ghMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pgh(M, ...),
+                                  skewness = try(1 - 2*pgh(M, ...), silent = TRUE),
                                   x = "generalized_hyperbolic",
                                   method = "continuous",
                                   call = match.call()),
@@ -417,11 +442,14 @@ function(loc=0,
          shape=0,
          ...)
 {
-  if (-2-1/shape > 0) {
+  if (shape==-1) {
+    warning("all values between 'loc' and 'loc+scale' are modes. Only the mean value is returned")
+    M <- loc + scale/2  
+  } else if (-2-1/shape > 0) {
     M <- loc - scale/shape
   } else {
-    warning("still to be done. 'NA' is returned")
-    M <- NA
+    warning("the density is not continuous at the mode.")
+    M <- loc
   }
   return(M)
 }
@@ -429,9 +457,13 @@ function(loc=0,
 .mlv.gpd <-
 function(...)
 {
+  #require(evd)
+  if (!"package:evd" %in% search()) {
+    warning("package 'evd' should be loaded.")
+  }
   M <- gpdMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pgpd(M, ...),
+                                  skewness = try(1 - 2*pgpd(M, ...), silent = TRUE),
                                   x = "gpd",
                                   method = "continuous",
                                   call = match.call()),
@@ -458,9 +490,13 @@ function(shape,
 .mlv.gompertz <-
 function(...)
 {
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
   M <- gompertzMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pgompertz(M, ...),
+                                  skewness = try(1 - 2*pgompertz(M, ...), silent = TRUE),
                                   x = "gompertz",
                                   method = "continuous",
                                   call = match.call()),
@@ -481,9 +517,13 @@ function(loc=0,
 .mlv.gumbel <-
 function(...)
 {
+  #require(evd)
+  if (!"package:evd" %in% search()) {
+    warning("package 'evd' should be loaded.")
+  }
   M <- gumbelMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pgumbel(M, ...),
+                                  skewness = try(1 - 2*pgumbel(M, ...), silent = TRUE),
                                   x = "gumbel",
                                   method = "continuous",
                                   call = match.call()),
@@ -551,9 +591,13 @@ function(alpha = 1,
 .mlv.hyp <-
 function(...)
 {
+  #require(fBasics)
+  if (!"package:fBasics" %in% search()) {
+    warning("package 'fBasics' should be loaded.")
+  }
   M <- hypMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*phyp(M, ...),
+                                  skewness = try(1 - 2*phyp(M, ...), silent = TRUE),
                                   x = "hyperbolic",
                                   method = "continuous",
                                   call = match.call()),
@@ -575,9 +619,13 @@ function(location = 0,
 .mlv.koenker <- 
 function(...)
 {
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
   M <- koenkerMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pkoenker(M, ...),
+                                  skewness = try(1 - 2*pkoenker(M, ...), silent = TRUE),
                                   x = "koenker",
                                   method = "continuous",
                                   call = match.call()),
@@ -599,9 +647,13 @@ function(shape1,
 .mlv.kumar <-
 function(...)
 {
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
   M <- kumarMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pkumar(M, ...),
+                                  skewness = try(1 - 2*pkumar(M, ...), silent = TRUE),
                                   x = "kumaraswamy",
                                   method = "continuous",
                                   call = match.call()),
@@ -623,9 +675,13 @@ function(location = 0,
 .mlv.laplace <-
 function(...)
 {
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
   M <- laplaceMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*plaplace(M, ...),
+                                  skewness = try(1 - 2*plaplace(M, ...), silent = TRUE),
                                   x = "laplace",
                                   method = "continuous",
                                   call = match.call()),
@@ -733,6 +789,8 @@ function(...)
 
 ### Normal Inverse Gaussian distribution
 
+## The following function is taken from package 'fBasics'
+
 nigMode <-
 function(alpha = 1,
          beta = 0,
@@ -740,17 +798,58 @@ function(alpha = 1,
          mu = 0,
          ...)
 {
-  warning("still to be done. 'NA' is returned")
-  return(NA)
+  min <- qnig(0.01, alpha, beta, delta, mu)
+  max <- qnig(0.99, alpha, beta, delta, mu)
+  M <- optimize(f = dnig, interval = c(min, max), alpha = alpha, 
+      beta = beta, delta = delta, mu = mu, maximum = TRUE, 
+      tol = .Machine$double.eps)$maximum
+  return(M)
 }
 
 .mlv.nig <-
 function(...)
 {
+  #require(fBasics)
+  if (!"package:fBasics" %in% search()) {
+    warning("package 'fBasics' should be loaded.")
+  }
   M <- nigMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pnig(M, ...),
+                                  skewness = try(1 - 2*pnig(M, ...), silent = TRUE),
                                   x = "normal_inverse",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
+
+
+#------------------------------------------------------
+
+### Paralogistic distribution
+
+paralogisticMode <- 
+function(shape1.a, 
+         scale = 1)
+{
+  if (shape1.a <= 1) {
+    warning("the density is not continuous at the mode.")
+    return(0)
+  } else {
+    return(scale*((shape1.a-1)/(shape1.a^2+1))^(1/shape1.a))
+  }
+}
+
+.mlv.paralogistic <-
+function(...)
+{
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
+  M <- paralogisticMode(...) 
+  return(invisible(structure(list(M = M,
+                                  skewness = try(1 - 2*pparalogistic(M, ...), silent = TRUE),
+                                  x = "paralogistic",
                                   method = "continuous",
                                   call = match.call()),
                              class = "mlv")))
@@ -761,53 +860,61 @@ function(...)
 
 ### Pareto distribution
 
-#paretoMode <-
-#function(scale,
-#         ...)
-#{
-#  return(scale)
-#}
+paretoMode <-
+function(location,
+         ...)
+{
+  warning("the density is not continuous at the mode.")  
+  return(location)
+}
 
-#.mlv.pareto <-
-#function(...)
-#{
-#  M <- paretoMode(...) 
-#  return(invisible(structure(list(M = M,
-#                                  skewness = 1 - 2*NA,
-#                                  x = "pareto",
-#                                  method = "continuous",
-#                                  call = match.call()),
-#                             class = "mlv")))
-#}
+.mlv.pareto <-
+function(...)
+{
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
+  M <- paretoMode(...) 
+  return(invisible(structure(list(M = M,
+                                  skewness = try(1 - 2*ppareto(M, ...), silent = TRUE),
+                                  x = "pareto",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
 
 
 #------------------------------------------------------
 
 ### Rayleigh distribution       
-                                #! attention : cf.rayleigh distrib dans 'survival'
-#rayMode <-
-#function(scale,
-#         ...)
-#{
-#  return(scale)
-#}
 
-#.mlv.rayleigh <-
-#function(...)
-#{
-#  M <- rayMode(...)
-#  return(invisible(structure(list(M = M,
-#                                  skewness = 1 - 2*NA,
-#                                  x = "rayleigh",
-#                                  method = "continuous",
-#                                  call = match.call()),
-#                             class = "mlv")))
-#}
+rayleighMode <-
+function(scale = 1)
+{
+  return(scale)
+}
+
+.mlv.rayleigh <-
+function(...)
+{
+  #require(VGAM)
+  if (!"package:VGAM" %in% search()) {
+    warning("package 'VGAM' should be loaded.")
+  }
+  M <- rayleighMode(...)
+  return(invisible(structure(list(M = M,
+                                  skewness = try(1 - 2*prayleigh(M, ...), silent = TRUE),
+                                  x = "rayleigh",
+                                  method = "continuous",
+                                  call = match.call()),
+                             class = "mlv")))
+}
 
 
 #------------------------------------------------------
 
-### Skewed stable distribution
+### Stable distribution
 
 ## The following function is taken from package 'stabledist'
 
@@ -816,22 +923,21 @@ function(alpha,
          beta,
          gamma = 1,
          delta = 0,
-         pm = 0, #! pm = 0 ??
+         pm = 0, 
          ...) 
 {
+  beta.max <- 1 - 1e-11
+  tol <- .Machine$double.eps^0.25
   if (gamma == 1 & delta == 0 & pm == 0) {
-    if (beta > 0.99999999999) {
-      beta <- 0.99999999999
-    } else if (beta == 0) {
+    stopifnot(0 < alpha, alpha <= 2, length(alpha) == 1, -1 <= beta, beta <= 1, length(beta) == 1, length(beta.max) == 1)
+    if (alpha * beta == 0) {
       M <- 0
-    } else {
-      if (alpha == 0) {
-        M <- 0
-      } else {
-        M <- optimize(f = dstable, interval = c(-0.7, 0), 
-                          maximum = TRUE, alpha = alpha, beta = beta)$maximum
-        }
     }
+    if (beta > beta.max) {
+      beta <- beta.max
+    }
+    M <- optimize(dstable, interval = c(-0.7, 0) * sign(beta), alpha = alpha, 
+        beta = beta, pm = 0, maximum = TRUE, tol = tol)$maximum    
     return(M)
   } else {
     warning("still to be done. 'NA' is returned")
@@ -842,9 +948,13 @@ function(alpha,
 .mlv.stable <-
 function(...)
 {
+  #require(stabledist)
+  if (!"package:stabledist" %in% search()) {
+    warning("package 'stabledist' should be loaded.")
+  }
   M <- stableMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*pstable(M, ...),
+                                  skewness = try(1 - 2*pstable(M, ...), silent = TRUE),
                                   x = "stable",
                                   method = "continuous",
                                   call = match.call()),
@@ -896,9 +1006,13 @@ function(loc = 0,
 .mlv.rweibull <-
 function(...)
 {
+  #require(evd)
+  if (!"package:evd" %in% search()) {
+    warning("package 'evd' should be loaded.")
+  }
   M <- rweibullMode(...)
   return(invisible(structure(list(M = M,
-                                  skewness = 1 - 2*prweibull(M, ...),
+                                  skewness = try(1 - 2*prweibull(M, ...), silent = TRUE),
                                   x = "rweibull",
                                   method = "continuous",
                                   call = match.call()),
@@ -1095,7 +1209,7 @@ function(...)
 
 ### Hypergeometric distribution
 
-# value of the mode seen on http://www.math.uah.edu/stat/urn/Hypergeometric.xhtml
+# value of the mode seen on http://www.math.uah.edu/stat/urn/Hypergeometric.html
 
 hyperMode <-
 function(m,

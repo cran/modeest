@@ -37,8 +37,10 @@ laplaceMode         Mode of the Laplace distribution
 logisMode           Mode of the Logistic distribution
 lnormMode           Mode of the Lognormal distribution
 nigMode             Mode of the Negative Inverse Gaussian distribution
+paralogisticMode    Mode of the Paralogistic distribution
+paretoMode          Mode of the Pareto distribution
+rayleighMode        Mode of the Rayleigh distribution
 stableMode          Mode of the Stable distribution
-symstbMode          Mode of the Symmetric Stable distribution
 rweibullMode        Mode of the Reversed Weibull distribution
 tMode               Mode of the T (Student) distribution
 unifMode            Mode of the Uniform distribution

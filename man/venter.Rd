@@ -36,7 +36,7 @@ This function computes the Venter mode estimator, also called the Dalenius, or L
 \details{
 The modal interval, i.e. the shortest interval among intervals containing \code{k+1} observations, is first computed.
 The user should either give the bandwidth \code{bw} or the argument \code{k}, 
-\code{k} being taken equal to \code{ceiling(bw*ny) - 1} if missing. \cr
+\code{k} being taken equal to \code{ceiling(bw*n) - 1} if missing. \cr
 If \code{type = 1}, the midpoint of the modal interval is returned.
 If \code{type = 2}, the \code{floor((k+1)/2)}th element of the modal interval is returned.
 If \code{type = 3} or \code{type = "dalenius"}, the median of the modal interval is returned.
@@ -71,10 +71,6 @@ This returns an object of class \code{\link{mlv}}.
     \item Leclerc J. (1997).
     Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naif.
     \emph{C. R. Acad. Sci. Paris, Serie I}, \bold{325}(11):1207-1210.
-
-    \item Leclerc J. (2000).
-    Strong limiting behavior of two estimates of the mode: the shorth and the naive estimator. 
-    \emph{Statistics and Decisions}, \bold{18}(4).
     %
     %\item Bickel ??
   }

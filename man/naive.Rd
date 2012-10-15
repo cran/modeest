@@ -37,10 +37,6 @@ This returns an object of class \code{\link{mlv}}.
     \item Leclerc J. (1997).
     Comportement limite fort de deux estimateurs du mode : le shorth et l'estimateur naif.
     \emph{C. R. Acad. Sci. Paris, Serie I}, \bold{325}(11):1207-1210.
-    
-    \item Leclerc J. (2000).
-    Strong limiting behavior of two estimates of the mode: the shorth and the naive estimator. 
-    \emph{Statistics and Decisions},\bold{18}(4).
   }
 }
 

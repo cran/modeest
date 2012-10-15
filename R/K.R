@@ -23,6 +23,7 @@ function(x,
             class = ".kernel")
 }
 
+# Derivative
 .kernel.dbiweight <-
 function(x,
          ...)
@@ -45,6 +46,7 @@ function(x,
             class = ".kernel")
 }
 
+# Derivative
 .kernel.duniform <- .kernel.dchernoff <-
 function(x,
          ...)
@@ -65,7 +67,8 @@ function(x,
             properties = list(integral.K = 1, integral.K2 = 3/(4*a), continuous = Inf, differentiable = Inf)),
             class = ".kernel")
 }
-                          
+
+# Derivative                          
 .kernel.dcosine <-
 function(x,
          ...)
@@ -88,6 +91,7 @@ function(x,
             class = ".kernel")
 }
 
+# Derivative
 .kernel.deddy <-
 function(x,
          ...)
@@ -110,6 +114,7 @@ function(x,
             class = ".kernel")
 }
 
+# Derivative
 .kernel.depanechnikov <-
 function(x,
          ...)
@@ -131,7 +136,7 @@ function(x,
             class = ".kernel")
 }
 
-
+# Derivative
 .kernel.dgaussian <-
 function(x,
          ...)
@@ -141,7 +146,6 @@ function(x,
             properties = list(integral.K = 0, integral.K2 = 0.1410474, continuous = Inf, differentiable = Inf)),
             class = ".kernel")
 }
-
 
 .kernel.optcosine <-
 function(x,
@@ -154,6 +158,7 @@ function(x,
             class = ".kernel")
 }
 
+# Derivative
 .kernel.doptcosine <-
 function(x,
          ...)
@@ -176,6 +181,7 @@ function(x,
             class = ".kernel")
 }
 
+# Derivative
 .kernel.drectangular <-
 function(x,
          ...)
@@ -197,6 +203,7 @@ function(x,
             class = ".kernel")
 }
 
+# Derivative
 .kernel.dtriangular <-
 function(x,
          ...)

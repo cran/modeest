@@ -19,8 +19,8 @@ For a complete list of functions, use \code{library(help = "modeest")} or \code{
 \tabular{ll}{
 Package: \tab modeest\cr
 Type: \tab Package\cr
-Version: \tab 1.15\cr
-Date: \tab 2012-09-30\cr
+Version: \tab 2.1\cr
+Date: \tab 2012-10-15\cr
 License: \tab GPL version 2 or newer\cr
 }
 }
@@ -221,11 +221,11 @@ P. Poncet
     On the Asymptotic Properties of a Simple Estimate of the Mode.
     \emph{ESAIM Probab. Stat.}, \bold{8}:1-11.
 
-    \item Mokkadem A. et Pelletier M. (2005).
+    \item Mokkadem A. and Pelletier M. (2005).
     Adaptive Estimation of the Mode of a Multivariate Density.
     \emph{J. Nonparametr. Statist.}, \bold{17}(1):83-105.
 
-    \item Bickel D.R. et Fruehwirth R. (2006).
+    \item Bickel D.R. and Fruehwirth R. (2006).
     On a Fast, Robust Estimator of the Mode: Comparisons to Other Robust Estimators with Applications.
     \emph{Computational Statistics and Data Analysis}, \bold{50}(12):3500-3530.
     
@@ -237,5 +237,4 @@ P. Poncet
 \keyword{ robust }
 \keyword{ nonparametric }
 \seealso{ \code{\link{mlv}} for general mode estimation%;
-%\code{\link{dchern}} for the Chernoff distribution
 }
