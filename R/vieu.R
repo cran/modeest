@@ -6,7 +6,7 @@
 #' estimate is null. 
 #' 
 #' @note 
-#' The user should preferentially call \code{vieu} through 
+#' The user may call \code{vieu} through 
 #' \code{mlv(x, method = "vieu", ...)}. 
 #' 
 #' Presently, \code{vieu} is quite slow.
@@ -44,7 +44,7 @@
 #' returned. Otherwise, the \code{\link[stats]{uniroot}} method is used.
 #' 
 #' @importFrom stats uniroot
-#' @importFrom statip .kernelsList kernelfun
+#' @importFrom statip .kernelsList bandwidth kernelfun
 #' @export
 #' @aliases Vieu
 #' 
@@ -70,12 +70,13 @@ function(x,
 {
   if (pmatch(tolower(kernel), "normal", nomatch = 0)) {
     kernel <- "gaussian"
-  } else {
-    kernel <- match.arg(tolower(kernel), c(statip::.kernelsList(), "uniform"))
-  }
+  } #else {
+    #kernel <- match.arg(tolower(kernel), c(statip::.kernelsList(), "uniform"))
+  #}
     
-  #nx <- length(x)
-  if (is.null(bw)) bw <- bw.SJ(x)
+  if (is.null(bw)) bw <- "nrd0"
+  f <- statip::densityfun(x, bw = bw, kernel = kernel, ...)
+  bw <- statip::bandwidth(x, bw)
   
   fn <- 
   function(z)
@@ -83,22 +84,16 @@ function(x,
     k <- statip::kernelfun(kernel, derivative = TRUE)((z-x)/bw)
     sum(k)
   }
-  
-  #FN <- 
-  #function(z)
-  #{
-  #  mat <- kronecker(z/bw, t(-x/bw), FUN = "+")
-  #  k <- do.call(paste(".kernel.d", kernel, sep = ""), list(mat))$k
-  #  return(rowSums(k))
-  #}
-  
+
   if (!abc) {
-    r <- stats::uniroot(f = fn, interval = c(min(x), max(x)), ...)
+    r <- stats::uniroot(f = fn, interval = range(x), ...)
     M <- r$root
   } else {
-    FN <- Vectorize(fn)
-    f <- abs(FN(x)) 
-    M <- x[f == min(f)]
+    .NotYetImplemented()
+    #FN <- Vectorize(fn)
+    #f <- abs(FN(x)) 
+    #M <- x[f == min(f)]
+    # TODO: 
   }
   M
 }
